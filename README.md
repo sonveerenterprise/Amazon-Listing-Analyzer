@@ -4,6 +4,7 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 
 - Five weighted scores: compliance, attributes, selling-point coverage, bullet clarity, buyer pain points
 - Live rank by keyword (organic position, page, keyword in title/highlights) in every report
+- Keyword indexing check (is each word indexed for the ASIN, with a control test) in every report
 - Add-on checks: keywords, sensitive claims (FSSAI for India), IP risk, consistency, image-by-image review, nutrition table and lab parameters, A+, Rufus/Alexa (AEO)
 - English HTML report on request
 

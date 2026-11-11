@@ -134,6 +134,15 @@
 </div>
 
 <div class="section">
+  <h2>🔎 Keyword indexing check</h2>
+  <table>
+    <tr><th>Word</th><th>Indexed?</th><th>Fix</th></tr>
+    {INDEX_ROWS}
+  </table>
+  <p class="small">Method: searched "{ASIN} + word"; indexed = the listing appears. Control words ({CONTROL_WORDS}) were not indexed, so the test is reliable. Checked {INDEX_DATE}.</p>
+</div>
+
+<div class="section">
   <h2>⚠️ Sensitive claims</h2>
   <div class="callout"><strong>Summary:</strong> {SW_SUMMARY}</div>
   <table><tr><th>Where</th><th>Text</th><th>Type</th><th>Risk</th><th>Suggested wording</th></tr>{SW_ROWS}</table>

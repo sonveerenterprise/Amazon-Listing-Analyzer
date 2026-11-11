@@ -108,6 +108,21 @@ Output one table:
 - Below the table: "Lower number = better position. Organic positions exclude sponsored results; page 1 held N organic results."
 - Never invent search volume, history, traffic or revenue; this is a single snapshot that varies by location and personalisation.
 
+### Step 3C — Keyword indexing check (always run; always in the detailed report)
+Checks whether Amazon has indexed a word for this ASIN. Search `{ASIN} {word}` on the target marketplace (from a tab on that Amazon site, e.g. `fetch('/s?k=' + encodeURIComponent(ASIN + ' ' + word))`). If the result HTML contains `data-asin="{ASIN}"`, the word is indexed.
+
+- Test 10–16 words: core keywords, claims and certifications (e.g. organic, NPOP, NMR), backend-only terms, local-language words (e.g. shahad, madhu), and spelling variants (crystallized/crystallised).
+- **Always run a control** with 3–4 unrelated words (e.g. laptop, zebra) in the same batch. If any control comes back indexed, the test is unreliable; say so and don't report results.
+- Amazon doesn't always match word forms ("crystallization" in a bullet doesn't index "crystallized"), so test the exact form shoppers type.
+
+Output one table:
+
+| Word | Indexed? | Fix |
+|---|---|---|
+| madhu | ❌ No | Add to backend search terms |
+
+Fix = where to add the word (title, highlights, bullets or backend search terms), respecting character limits and claim rules. Never recommend competitor brand names in backend terms.
+
 ### Step 4 — IP and misrepresentation risk (add-on)
 Trademarks (other brands' names in title/bullets/images), copyright, known patent risks (flag only, not a legal opinion), certification marks used without right, naming that misrepresents the main ingredient. Levels: P0 confirmed / P1 risk signal / P2 preventive.
 
@@ -156,7 +171,7 @@ P0 items go in a red box at the top regardless of score: title over limit; banne
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title and highlights lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
 
 ## Rules
 
@@ -181,6 +196,7 @@ Only create the HTML report when the user asks for one. Use `assets/report_templ
 19. Review images one by one, never as a single overall judgment.
 20. A+ must always be checked, including which variant it shows and its alt text.
 21. Run the nutrition and lab-parameter check (Step 6B) whenever a table or report is available.
+21c. Run the keyword indexing check (Step 3C) with a control for every ASIN and include it in every detailed report.
 21b. Run the rank-by-keyword check (Step 3B) for every ASIN and include it in every detailed report. Before recommending removal of any title or highlights word, check whether it currently drives a page-1 rank.
 22. Regulatory points are risk flags based on current understanding; tell the user to confirm with their consultant.
 23. Keep chat answers short and to the point; put detail in the report.

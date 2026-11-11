@@ -1,0 +1,31 @@
+name: amazon-listing-analyzer
+display_name: Amazon Listing Analyzer
+version: 3.0.0
+author: Floki Garvey (translated and extended)
+license: MIT
+category: ecommerce
+description: >
+  Multi-marketplace Amazon listing diagnosis: five weighted dimensions (compliance,
+  attribute completeness, selling-point coverage, bullet clarity and order, buyer persona
+  and pain points) plus keyword, sensitive-claim, IP, consistency, per-image, nutrition and
+  lab-parameter, A+ and Rufus/Alexa checks. Outputs actionable fixes and an English HTML report.
+triggers:
+  - analyze listing
+  - diagnose listing
+  - optimize listing
+  - ASIN analysis
+  - listing audit
+  - keyword check
+  - sensitive words
+  - IP risk
+  - image review
+  - A+ review
+  - nutrition table check
+platforms:
+  - Claude Code
+tags:
+  - amazon
+  - listing
+  - ecommerce
+  - rufus
+  - aeo

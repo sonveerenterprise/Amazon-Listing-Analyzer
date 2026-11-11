@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Listing Diagnosis - {ASIN}</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#fff; color:#1a1a1a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif; line-height:1.7; padding:24px; max-width:980px; margin:0 auto; }
+  .report-header { background:#f7f8fa; border:1px solid #e0e0e0; border-radius:10px; padding:28px; text-align:center; margin-bottom:20px; }
+  .report-header h1 { font-size:26px; margin-bottom:6px; }
+  .subtitle { color:#666; font-size:14px; } .meta { color:#e47911; font-weight:700; margin-top:12px; font-size:15px; }
+  .site-badge { display:inline-block; background:#fff; border:1px solid #d5d9d9; padding:3px 12px; border-radius:16px; font-size:13px; margin:8px 4px 0; }
+  .source { color:#888; font-size:13px; margin-top:4px; }
+  .section { border:1px solid #d5d9d9; border-radius:10px; padding:24px; margin-top:16px; }
+  .section h2 { font-size:19px; border-bottom:2px solid #e47911; padding-bottom:8px; margin-bottom:14px; }
+  .section h3 { font-size:16px; margin:18px 0 10px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; }
+  th { background:#f0f2f2; padding:9px 12px; text-align:left; font-weight:600; font-size:13px; border:1px solid #d5d9d9; }
+  td { padding:9px 12px; border:1px solid #e7e9e9; font-size:13px; vertical-align:top; }
+  tr:nth-child(even) td { background:#fafafa; }
+  .center { text-align:center; }
+  .ok { color:#067d62; font-weight:700; } .fail { color:#c40000; font-weight:700; } .warn { color:#e47911; font-weight:700; } .grey { color:#8a8a8a; font-weight:700; }
+  .total-row td { background:#fff8ef !important; font-weight:700; font-size:15px; }
+  .callout { background:#f7f8fa; border-left:4px solid #e47911; border-radius:6px; padding:12px 16px; margin:10px 0; font-size:14px; }
+  .callout-red { border-left-color:#c40000; background:#fdf3f3; } .callout-green { border-left-color:#067d62; background:#f2faf7; }
+  .p0-box { background:#fdf3f3; border:2px solid #c40000; border-radius:8px; padding:16px; margin:16px 0; }
+  .p0-title { color:#c40000; font-weight:700; font-size:16px; margin-bottom:8px; }
+  ul { margin-left:20px; } li { margin:4px 0; font-size:14px; }
+  .check-item { padding:6px 0; border-bottom:1px dashed #d5d9d9; font-size:13px; }
+  .suggestion { background:#f7f8fa; border:1px solid #e7e9e9; border-radius:8px; padding:14px 16px; margin-bottom:10px; font-size:14px; }
+  .num { color:#e47911; font-weight:700; }
+  .tag { font-size:12px; padding:2px 8px; border-radius:4px; margin-left:8px; color:#fff; }
+  .tag-p0 { background:#c40000; } .tag-p1 { background:#e47911; } .tag-p2 { background:#8a8a8a; }
+  .effect { color:#067d62; font-size:13px; }
+  .code-block { background:#f5f5f5; border:1px solid #e7e9e9; padding:8px 14px; border-radius:6px; font-size:13px; margin:6px 0; white-space:pre-wrap; }
+  code { background:#f5f5f5; border:1px solid #e7e9e9; color:#c40000; padding:1px 5px; border-radius:4px; font-size:12px; }
+  .persona-card { background:#f7f8fa; border-left:4px solid #e47911; border-radius:8px; padding:16px; margin:10px 0; font-size:14px; }
+  .img-card { display:flex; gap:14px; border:1px solid #e7e9e9; border-radius:8px; padding:14px; margin:10px 0; }
+  .img-card img { width:150px; height:150px; object-fit:contain; border:1px solid #e7e9e9; border-radius:6px; flex-shrink:0; }
+  .img-info { flex:1; font-size:13px; } .img-no { font-weight:700; color:#e47911; font-size:14px; }
+  .img-type { display:inline-block; background:#f0f2f2; border:1px solid #d5d9d9; padding:1px 8px; border-radius:10px; font-size:12px; margin-left:6px; }
+  .img-good { color:#067d62; margin-top:4px; } .img-issues { color:#c40000; margin-top:4px; }
+  .small { font-size:12px; color:#666; }
+  .footer { color:#888; font-size:12px; text-align:center; margin-top:20px; padding:12px; }
+  @media (max-width:600px){ body{padding:12px} .img-card{flex-direction:column} table{display:block; overflow-x:auto} }
+</style>
+</head>
+<body>
+<!-- Replace every {PLACEHOLDER}. Remove sections that don't apply (for example the nutrition section for non-food items). -->
+
+<div class="report-header">
+  <h1>Amazon Listing Diagnosis Report</h1>
+  <div class="subtitle">Five-dimension scoring · Per-image review · Keywords · Sensitive claims · IP risk · Cross-check · Nutrition · A+ · Rufus/Alexa (AEO)</div>
+  <div class="meta">ASIN: {ASIN} — {PRODUCT_NAME}</div>
+  <div><span class="site-badge">Marketplace: {SITE}</span><span class="site-badge">Language: {LANGUAGE}</span><span class="site-badge">Currency: {CURRENCY}</span></div>
+  <div class="source">Data source: {DATA_SOURCE} | Generated: {DATE}</div>
+</div>
+
+<div class="section">
+  <h2>📊 Scorecard</h2>
+  <table>
+    <tr><th>Dimension</th><th class="center">Weight</th><th class="center">Score</th><th class="center">Grade</th></tr>
+    <tr><td>① Compliance</td><td class="center">25%</td><td class="center {D1_CLASS}">{D1_SCORE}/100</td><td class="center">{D1_GRADE}</td></tr>
+    <tr><td>② Attribute completeness</td><td class="center">20%</td><td class="center {D2_CLASS}">{D2_SCORE}/100</td><td class="center">{D2_GRADE}</td></tr>
+    <tr><td>③ Selling-point coverage</td><td class="center">20%</td><td class="center {D3_CLASS}">{D3_SCORE}/100</td><td class="center">{D3_GRADE}</td></tr>
+    <tr><td>④ Bullet clarity and order</td><td class="center">20%</td><td class="center {D4_CLASS}">{D4_SCORE}/100</td><td class="center">{D4_GRADE}</td></tr>
+    <tr><td>⑤ Buyer persona and pain points</td><td class="center">15%</td><td class="center {D5_CLASS}">{D5_SCORE}/100</td><td class="center">{D5_GRADE}</td></tr>
+    <tr class="total-row"><td>Weighted total</td><td class="center">100%</td><td class="center">{TOTAL_SCORE}/100</td><td class="center">{GRADE}</td></tr>
+  </table>
+  <div class="callout"><strong>Verdict:</strong> {SUMMARY}</div>
+</div>
+
+<div class="p0-box">
+  <div class="p0-title">⚠ P0 — fix first</div>
+  <ul>{P0_ITEMS}</ul>
+</div>
+
+<div class="section">
+  <h2>① Compliance <span class="small">(25%) — {D1_SCORE}/100</span></h2>
+  <div class="callout"><strong>Summary:</strong> {D1_SUMMARY}</div>
+  {D1_CHECKLIST}
+</div>
+
+<div class="section">
+  <h2>② Attribute completeness <span class="small">(20%) — {D2_SCORE}/100</span></h2>
+  <div class="callout"><strong>Summary:</strong> {D2_SUMMARY}</div>
+  <table><tr><th>Attribute</th><th>Status</th><th>Note</th></tr>{D2_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>③ Selling-point coverage <span class="small">(20%) — {D3_SCORE}/100</span></h2>
+  <div class="callout"><strong>Summary:</strong> {D3_SUMMARY}</div>
+  <table><tr><th>Decision item</th><th>Covered?</th><th>Gap</th></tr>{D3_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>④ Bullet clarity and order <span class="small">(20%) — {D4_SCORE}/100</span></h2>
+  <div class="callout"><strong>Summary:</strong> {D4_SUMMARY}</div>
+  <table><tr><th>#</th><th>Topic</th><th>Issue</th></tr>{D4_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>⑤ Buyer persona and pain points <span class="small">(15%) — {D5_SCORE}/100</span></h2>
+  <div class="persona-card"><strong>Persona:</strong> {PERSONA}</div>
+  <table><tr><th>Pain point</th><th>Priority</th><th>Can answer?</th><th>Answered?</th><th>Where</th></tr>{D5_ROWS}</table>
+  <h3>Selling points the product has but the text omits</h3>
+  <ul>{D5_OMISSIONS}</ul>
+</div>
+
+<div class="section">
+  <h2>📸 Image-by-image review</h2>
+  <div class="callout"><strong>Summary:</strong> {IMG_SUMMARY}</div>
+  {IMG_CARDS}
+  <h3>Text vs. image coverage</h3>
+  <table><tr><th>Selling point</th><th>Text</th><th>Images</th><th>Verdict</th></tr>{IMG_DUAL_ROWS}</table>
+  <p style="font-size:14px"><strong>Suggested order:</strong> {IMG_ORDER}</p>
+</div>
+
+<div class="section">
+  <h2>🔑 Keyword coverage</h2>
+  <div class="callout"><strong>Summary:</strong> {KW_SUMMARY}</div>
+  <table><tr><th>Keyword</th><th>Title</th><th>Highlights</th><th>Bullets</th><th>A+</th><th>Status</th></tr>{KW_ROWS}</table>
+  <p style="font-size:14px"><strong>Backend search terms (suggestion):</strong> <code>{SEARCH_TERMS}</code></p>
+</div>
+
+<div class="section">
+  <h2>⚠️ Sensitive claims</h2>
+  <div class="callout"><strong>Summary:</strong> {SW_SUMMARY}</div>
+  <table><tr><th>Where</th><th>Text</th><th>Type</th><th>Risk</th><th>Suggested wording</th></tr>{SW_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>⚖️ IP and misrepresentation risk</h2>
+  <table><tr><th>Type</th><th>Detail</th><th>Risk</th><th>Action</th></tr>{IP_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>🔗 Cross-check consistency</h2>
+  <table><tr><th>Item</th><th>Images / label</th><th>Text</th><th>Attributes</th><th>A+</th><th>Result</th></tr>{CC_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>🧪 Nutrition table and lab parameters <span class="small">(food only)</span></h2>
+  <div class="callout"><strong>Summary:</strong> {NUT_SUMMARY}</div>
+  <table><tr><th>Parameter</th><th>Value + unit</th><th>Check</th><th>Result</th><th>What to verify</th></tr>{NUT_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>🅰️ A+ content</h2>
+  <div class="callout"><strong>Summary:</strong> {AP_SUMMARY}</div>
+  <table><tr><th>#</th><th>Module</th><th>Content</th><th>Issue</th></tr>{AP_ROWS}</table>
+  <ul>{AP_ACTIONS}</ul>
+</div>
+
+<div class="section">
+  <h2>🤖 Rufus / Alexa discoverability (AEO) — {AEO_SCORE}/100</h2>
+  <table><tr><th>Check</th><th>Score</th><th>How to improve</th></tr>{AEO_ROWS}</table>
+</div>
+
+<div class="section">
+  <h2>🎯 Action list</h2>
+  {SUGGESTIONS}
+</div>
+
+<div class="section">
+  <h2>📋 Data collection</h2>
+  <table>
+    <tr><th style="width:200px">Item</th><th>Detail</th></tr>
+    <tr><td>Marketplace</td><td>{SITE}, {LANGUAGE}, {CURRENCY} ({PRICE_CHECK})</td></tr>
+    <tr><td>Data source</td><td>{DATA_SOURCE}</td></tr>
+    <tr><td>Not obtained</td><td>{MISSING_DATA}</td></tr>
+    <tr><td>Listing snapshot</td><td>{SNAPSHOT}</td></tr>
+  </table>
+</div>
+
+<div class="footer">Amazon Listing Analyzer v3.0 · Based on public page data and category knowledge. Regulatory and IP points are risk flags, not legal advice.</div>
+</body>
+</html>

@@ -21,4 +21,6 @@ Create a branch, make your change, open a pull request. Keep everything in Engli
 
 ## Credits
 
-Based on the original Amazon Listing Analyzer by Floki Garvey (MIT). Translated to English and extended (India/FSSAI rules, nutrition and lab-parameter checks, AEO guidance).
+Based on the original Amazon Listing Analyzer by Floki Garvey (MIT).
+
+**Maintained and extended by Virendrasinh Jethwa:** full English translation, India/FSSAI rules, 75-character title and Item Highlights limits for amazon.in, nutrition table and lab-parameter checks, Rufus/Alexa (AEO) guidance, and a new English report template.

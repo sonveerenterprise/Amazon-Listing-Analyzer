@@ -1,7 +1,7 @@
 name: amazon-listing-analyzer
 display_name: Amazon Listing Analyzer
 version: 3.0.0
-author: Floki Garvey (translated and extended)
+author: Floki Garvey (original); Virendrasinh Jethwa (English version and extensions)
 license: MIT
 category: ecommerce
 description: >

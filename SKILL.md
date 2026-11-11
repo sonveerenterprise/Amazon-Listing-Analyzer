@@ -93,6 +93,21 @@ One topic per bullet; no repetition; order = core benefit → supporting facts �
 - Never recommend sensitive or regulated words (disease terms, warranty claims) as keywords, even if searched.
 - Suggest backend search terms (no brand names, no repetition of title words; local-language and phonetic spellings are useful).
 
+### Step 3B — Rank by keyword (always run; always in the detailed report)
+Run this in every ASIN check, and include the table in every detailed HTML report. Take 5–8 keywords from Step 3 (core term, spelling variants, long-tail and use-case terms). For each, open the live search page on the target marketplace (with language parameter) in the browser and find the ASIN among **organic** results only (skip "Sponsored" items). Check page 1; check page 2 for core keywords not found on page 1.
+
+Output one table:
+
+| Keyword | Organic rank | Page | Keyword in title? | Keyword in highlights? | Note |
+|---|---|---|---|---|---|
+| leh berry juice | #9 | 1 | ✗ | ✓ | Ranks well; only the highlights contain "Leh Berry" |
+
+- Organic rank = position among organic results across the pages checked (e.g. page 2, 15th organic = #63 when page 1 holds 48).
+- "Keyword in title / highlights": ✓, ✗, or "Partial" / the near-match found (e.g. "Himalaya" only).
+- Note: one line linking the rank to the listing (what helps, what to add).
+- Below the table: "Lower number = better position. Organic positions exclude sponsored results; page 1 held N organic results."
+- Never invent search volume, history, traffic or revenue; this is a single snapshot that varies by location and personalisation.
+
 ### Step 4 — IP and misrepresentation risk (add-on)
 Trademarks (other brands' names in title/bullets/images), copyright, known patent risks (flag only, not a legal opinion), certification marks used without right, naming that misrepresents the main ingredient. Levels: P0 confirmed / P1 risk signal / P2 preventive.
 
@@ -141,7 +156,7 @@ P0 items go in a red box at the top regardless of score: title over limit; banne
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title and highlights lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
 
 ## Rules
 
@@ -166,6 +181,7 @@ Only create the HTML report when the user asks for one. Use `assets/report_templ
 19. Review images one by one, never as a single overall judgment.
 20. A+ must always be checked, including which variant it shows and its alt text.
 21. Run the nutrition and lab-parameter check (Step 6B) whenever a table or report is available.
+21b. Run the rank-by-keyword check (Step 3B) for every ASIN and include it in every detailed report. Before recommending removal of any title or highlights word, check whether it currently drives a page-1 rank.
 22. Regulatory points are risk flags based on current understanding; tell the user to confirm with their consultant.
 23. Keep chat answers short and to the point; put detail in the report.
 

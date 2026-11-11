@@ -125,6 +125,15 @@
 </div>
 
 <div class="section">
+  <h2>📊 Rank by keyword</h2>
+  <table>
+    <tr><th>Keyword</th><th class="center">Organic rank</th><th class="center">Page</th><th>Keyword in title?</th><th>Keyword in highlights?</th><th>Note</th></tr>
+    {RANK_ROWS}
+  </table>
+  <p class="small">Lower number = better position. Organic positions exclude sponsored results; page 1 held {ORGANIC_PER_PAGE} organic results. Checked {RANK_DATE}; single snapshot.</p>
+</div>
+
+<div class="section">
   <h2>⚠️ Sensitive claims</h2>
   <div class="callout"><strong>Summary:</strong> {SW_SUMMARY}</div>
   <table><tr><th>Where</th><th>Text</th><th>Type</th><th>Risk</th><th>Suggested wording</th></tr>{SW_ROWS}</table>

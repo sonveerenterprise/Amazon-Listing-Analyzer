@@ -127,7 +127,12 @@
 <div class="section">
   <h2>📊 Rank by keyword</h2>
   <table>
-    <tr><th>Keyword</th><th class="center">Organic rank</th><th class="center">Page</th><th>Keyword in title?</th><th>Keyword in highlights?</th><th>Note</th></tr>
+    <tr><th>Metric</th><th>Value</th></tr>
+    <tr><td>Keyword distribution</td><td>{KW_TOTAL} checked · {KW_ORGANIC} organic · {KW_PAID} paid · {KW_AR} Amazon-suggested</td></tr>
+    <tr><td>Word frequency</td><td>{WORD_FREQUENCY}</td></tr>
+  </table>
+  <table>
+    <tr><th>Keyword</th><th class="center">Organic rank</th><th class="center">Sponsored rank</th><th class="center">Amazon suggests?</th><th>Match type</th><th class="center">Competing products</th><th class="center">Sponsored ASINs (p1)</th><th class="center">Title density</th><th>In title?</th><th>In highlights?</th><th>Note</th></tr>
     {RANK_ROWS}
   </table>
   <p class="small">Lower number = better position. Organic positions exclude sponsored results; page 1 held {ORGANIC_PER_PAGE} organic results. Checked {RANK_DATE}; single snapshot.</p>

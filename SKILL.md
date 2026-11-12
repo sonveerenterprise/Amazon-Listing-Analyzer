@@ -94,19 +94,46 @@ One topic per bullet; no repetition; order = core benefit → supporting facts �
 - Suggest backend search terms (no brand names, no repetition of title words; local-language and phonetic spellings are useful).
 
 ### Step 3B — Rank by keyword (always run; always in the detailed report)
-Run this in every ASIN check, and include the table in every detailed HTML report. Take 5–8 keywords from Step 3 (core term, spelling variants, long-tail and use-case terms). For each, open the live search page on the target marketplace (with language parameter) in the browser and find the ASIN among **organic** results only (skip "Sponsored" items). Check page 1; check page 2 for core keywords not found on page 1.
+Run this in every ASIN check, and include the table in every detailed HTML report. A free, Cerebro-style keyword table built from live public pages only.
 
-Output one table:
+**1. Build the keyword list (10–20 keywords).**
+- Run Amazon autocomplete mining for 1–2 seed terms (the product's core keyword): from a tab on the target Amazon site, call the same-origin endpoint `/suggestions?limit=11&suggestion-type=KEYWORD&alias=aps&site-variant=desktop&version=3&lop=en_IN&mid={marketplaceId}&prefix={prefix}` (India `mid=A21TJRUUN4KGV`) for the seed, "best/top {seed}" and "{seed} a…z". (Plain HTTP calls and cross-site calls are usually blocked; use the browser tab.)
+- Add the title's and highlights' key phrases, spelling variants and local-language terms.
+- Exclude other brands' names and sensitive/disease terms from recommendations (they can still be measured, marked "brand term").
+- Prioritise: core term, variants, long-tail and use-case terms.
 
-| Keyword | Organic rank | Page | Keyword in title? | Keyword in highlights? | Note |
-|---|---|---|---|---|---|
-| leh berry juice | #9 | 1 | ✗ | ✓ | Ranks well; only the highlights contain "Leh Berry" |
+**2. For each keyword, open the live search page** (`/s?k={keyword}&language=...`; page 1, and page 2 for core keywords not on page 1) and measure:
 
-- Organic rank = position among organic results across the pages checked (e.g. page 2, 15th organic = #63 when page 1 holds 48).
-- "Keyword in title / highlights": ✓, ✗, or "Partial" / the near-match found (e.g. "Himalaya" only).
-- Note: one line linking the rank to the listing (what helps, what to add).
-- Below the table: "Lower number = better position. Organic positions exclude sponsored results; page 1 held N organic results."
-- Never invent search volume, history, traffic or revenue; this is a single snapshot that varies by location and personalisation.
+| Column | How |
+|---|---|
+| Organic rank | Position of the ASIN among organic results (skip "Sponsored"), written `#27 · P1`; page 2 continues the count (#63 · P2) |
+| Sponsored rank | Position among sponsored results on the page if the ASIN appears as an ad (`#13 · P1`), else "–" |
+| Amazon suggests? (AR) | ✓ if the exact keyword appears in Amazon's suggestion list (prefix = the keyword), else ✗. Don't report a numeric AR rank: Helium's "Amazon Rec. Rank" is a different, proprietary measure |
+| Match type | O = ranks organically, SP = seen as sponsored, AR = Amazon suggests the keyword |
+| Competing products | From the results bar ("1-48 of over 2,000 results" → ">2,000") |
+| Sponsored ASINs | Number of sponsored placements counted on page 1 (state "page 1 count") |
+| Title density | Number of page-1 result titles containing the exact phrase (case-insensitive) |
+| In title? / In highlights? | ✓, ✗, or Partial (near-match, e.g. "Himalaya" only) for this listing |
+| Note | One line: what helps or what to add |
+
+Output table:
+
+| Keyword | Organic rank | Sponsored rank | Amazon suggests? | Match type | Competing products | Sponsored ASINs (p1) | Title density | In title? | In highlights? | Note |
+|---|---|---|---|---|---|---|---|---|---|---|
+| leh berry seabuckthorn juice | #5 · P1 | – | ✓ | O, AR | 311 | 12 | 0 | ✗ | ✓ | Ranks from highlights |
+
+Tested against Helium 10 Cerebro (Nov 2026): organic rank, competing products and title density matched within a few positions/products.
+
+**3. Summary above the table:**
+- **Keyword distribution:** total keywords checked · organic (ranked on pages checked) · paid (seen as sponsored) · Amazon-suggested (AR).
+- **Word frequency:** the 10–15 most common words across the keyword list with counts (e.g. juice (12), buckthorn (10)).
+
+**4. Optional — Brand Analytics:** if the user shares an Amazon Brand Analytics (Search Query Performance / Top Search Terms) export, add **Click share** and **Conversion share** (and Search Frequency Rank) columns for matching keywords, citing the report period.
+
+**Rules**
+- Below the table: "Lower number = better position. Organic positions exclude sponsored results; page 1 held N organic results. Single snapshot on {date}; results vary by location and personalisation."
+- **Never show search volume, search-volume trend, IQ score, CPR, traffic or revenue.** These are paid-tool estimates (e.g. Helium 10) and can't be measured from public pages. If the user shares a paid-tool export, those columns can be added with the source named.
+- History: if earlier snapshots exist in `~/reports/`, add a "Previous rank" column and the change; otherwise don't mention history.
 
 ### Step 3C — Keyword indexing check (always run; always in the detailed report)
 Checks whether Amazon has indexed a word for this ASIN. Search `{ASIN} {word}` on the target marketplace (from a tab on that Amazon site, e.g. `fetch('/s?k=' + encodeURIComponent(ASIN + ' ' + word))`). If the result HTML contains `data-asin="{ASIN}"`, the word is indexed.

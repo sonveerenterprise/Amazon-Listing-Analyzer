@@ -165,13 +165,29 @@ Score 0–100: title meaning (what + for whom + key benefit) 15; Amazon's Choice
 ### Step 10 — P0 list and total score
 P0 items go in a red box at the top regardless of score: title over limit; banned characters, promo or competitor words in title; non-compliant main image; price/promo/contact in bullets; cross-category variations; core attributes mostly empty; AI people without XMP; suppressed listing; disease/medical claims; other brands' logos; unsupported certifications; contradictory values for the same attribute; A+ showing another variant.
 
-### Step 11 — Competitor comparison (optional)
+### Step 11 — Competitor snapshot (always run; always in the detailed report)
+Use the main keyword's live search page (same marketplace, language parameter) in the browser.
+
+1. **Pick competitors:** the top 5 **organic** results other than this ASIN (skip "Sponsored"). If the user names competitor ASINs, use those instead.
+2. **Matrix** (one row per product, this ASIN first, in bold):
+
+| Product | Price | Unit price (₹/100 g or per unit) | Rating | Ratings | Title length | Images | Video | A+ modules | Brand Story |
+|---|---|---|---|---|---|---|---|---|---|
+
+   Price, unit price, rating and ratings count come from the search result card; title length, images (`hiRes` count), video, A+ module count (`#aplus .aplus-module`) and Brand Story from each product page. Flag competitor titles over the marketplace limit.
+3. **Sponsored visibility:** count the sponsored placements on page 1 for the main keyword, list the brands, and say whether this ASIN appears.
+4. **Review topics ("Customers say"):** on the rendered product page, read the aspect buttons (aria-label like "Positive aspect, quality, 2534 mentions"). Compare this ASIN with the top 2–3 competitors as positive / mixed / negative with mention counts, and note the star distribution (e.g. % of 1-star). Highlight category-wide concerns (e.g. authenticity mixed for everyone) as positioning opportunities.
+5. **Key findings:** 3–5 points: price position (premium/discount vs. median unit price and why it is or isn't justified in the text), claims competitors use in titles that this listing lacks, content gaps (images, video, A+, Brand Story), ad visibility gap, review-topic gaps.
+
+Never estimate PPC spend, market share, sales, deal frequency or price history; they can't be measured from public pages. Say "not available" if asked.
+
+### Step 11B — Extra competitor comparison (optional)
 
 ### Step 12 — Action list
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title and highlights lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, competitor snapshot, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
 
 ## Rules
 
@@ -196,6 +212,7 @@ Only create the HTML report when the user asks for one. Use `assets/report_templ
 19. Review images one by one, never as a single overall judgment.
 20. A+ must always be checked, including which variant it shows and its alt text.
 21. Run the nutrition and lab-parameter check (Step 6B) whenever a table or report is available.
+21d. Run the competitor snapshot (Step 11) for every ASIN and include it in every detailed report; real page data only.
 21c. Run the keyword indexing check (Step 3C) with a control for every ASIN and include it in every detailed report.
 21b. Run the rank-by-keyword check (Step 3B) for every ASIN and include it in every detailed report. Before recommending removal of any title or highlights word, check whether it currently drives a page-1 rank.
 22. Regulatory points are risk flags based on current understanding; tell the user to confirm with their consultant.

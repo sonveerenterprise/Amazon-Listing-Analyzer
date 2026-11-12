@@ -143,6 +143,21 @@
 </div>
 
 <div class="section">
+  <h2>🏆 Competitor snapshot <span class="small">(top 5 organic for "{MAIN_KEYWORD}")</span></h2>
+  <table>
+    <tr><th>Product</th><th>Price</th><th>Unit price</th><th>Rating</th><th>Ratings</th><th>Title length</th><th>Images</th><th>Video</th><th>A+ modules</th><th>Brand Story</th></tr>
+    {COMP_ROWS}
+  </table>
+  <h3>Sponsored visibility</h3>
+  <p style="font-size:14px">{SPONSORED_SUMMARY}</p>
+  <h3>Review topics ("Customers say")</h3>
+  <table><tr><th>Product</th><th>Positive</th><th>Mixed / negative</th><th>Star note</th></tr>{REVIEW_TOPIC_ROWS}</table>
+  <h3>Key findings</h3>
+  <ul>{COMP_FINDINGS}</ul>
+  <p class="small">Live page data, single snapshot ({COMP_DATE}). PPC spend, market share, sales and price history are not available from public pages.</p>
+</div>
+
+<div class="section">
   <h2>⚠️ Sensitive claims</h2>
   <div class="callout"><strong>Summary:</strong> {SW_SUMMARY}</div>
   <table><tr><th>Where</th><th>Text</th><th>Type</th><th>Risk</th><th>Suggested wording</th></tr>{SW_ROWS}</table>

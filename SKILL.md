@@ -183,8 +183,33 @@ Output: parameter → value + unit → check → OK/deviation → what to verify
 ### Step 7 — Per-image review (add-on)
 Review **every** carousel image one by one: type, selling point, rendering/photo quality, design, layout and text size on mobile, order. Score each 0–100. Flag duplicates, label rotations that add nothing, claims in images, cross-variant images. Build a text-vs-image coverage matrix for key selling points and suggest a new order. See `references/image_diagnosis.md`.
 
-### Step 8 — A+ content (add-on)
-Existence and type (Basic: up to 5 modules; Premium: up to 7; Brand Story separate). Module list, duplicate images, alt text quality (generic codes = fix), sensitive claims in A+ text and images, comparison-table values vs attributes, selling-point consistency with bullets, typos, carousel order (scene → function → detail → comparison → CTA), and which variant the A+ shows. Suggest missing modules (FAQ via Standard Text, comparison chart, certifications, video). See `references/aplus_diagnosis.md`.
+### Step 8 — A+ content: current audit + compliant improvement plan (always in the detailed report)
+
+**8a. Audit the current A+.** Existence and type (Basic: up to 5 modules; Premium: up to 7; Brand Story separate). Module list (type, content, issue), duplicate images, alt text quality (empty or codes = fix), sensitive claims in A+ text and images, comparison-table values vs attributes, consistency with bullets, typos, carousel order (scene → function → detail → comparison → CTA), and which variant the A+ shows. Look at every A+ image. See `references/aplus_diagnosis.md`.
+
+**8b. Write a compliant A+ plan** that fixes what 8a found, using the available module count plus Brand Story. Always state the tier in the plan heading, in brackets:
+- **(Basic A+: 5 modules / 5 images)**: use modules 1, 2, 3, 5 and an FAQ via **Standard Text** (Basic has no Q&A module).
+- **(Premium A+: 7 modules / 7 images)**: use all 7 below.
+If the current A+ uses Premium modules, give the Premium plan; otherwise give the Basic plan and note what Premium would add.
+
+Default flow (adapt to the product):
+
+| # | Purpose | Typical module |
+|---|---|---|
+| 1 | Hero: what it is + core value | Full-width image + text |
+| 2 | Problem → solution (the buyer's main worry, e.g. aftertaste, adulteration) | Split image / image + text |
+| 3 | Features → benefits with numbers (4 icons) | Four-image / icons |
+| 4 | Q&A 1: using the product | Q&A (Premium, up to 5 Q&As) or Standard Text |
+| 5 | Comparison chart: **own products only** (sizes, formats, flavours) | Comparison chart |
+| 6 | Lifestyle / use cases (local context, e.g. chai, mithai, baking) | Multiple images + text |
+| 7 | Q&A 2: ingredients, certifications, storage, who should be careful | Q&A or Standard Text |
+| + | Brand Story (separate, free) | Brand Story carousel |
+
+Output table per module: **# · module type · headline · copy (paste-ready) · image brief · alt text**. Use the competitor snapshot's complaint topics (Step 11) to choose what the problem/solution and Q&A modules answer.
+
+**Never include in A+ (Amazon rejects it):** customer reviews or testimonials; comparisons with other brands or naming competitors (own products only); prices, discounts, "limited time", stock or urgency/FOMO; warranty, guarantee or return-policy text; contact details, QR codes, shipping info; disease or medical claims; unverified certifications or "#1/best" claims; eco claims like "eco-friendly/biodegradable" without proof. Cost-per-serving belongs in carousel images, not A+.
+
+Never promise conversion lifts or ROI; say "expected to help conversion" at most.
 
 ### Step 9 — Rufus / Alexa discoverability (AEO, add-on)
 Score 0–100: title meaning (what + for whom + key benefit) 15; Amazon's Choice 10; bullet structure 15; query coverage (use-case, comparison, problem-solution, suitability) 20; structured attributes 15; Q&A 15; review language covered 5; A+ comparison/FAQ 5. For each part give the gap and the fix. See `references/cosmo_rufus_optimization.md`.

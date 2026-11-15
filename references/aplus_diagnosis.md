@@ -47,6 +47,12 @@ Full-width banners (1464×600) lose detail on mobile; keep key numbers large.
 | Keyword additions | 5 | |
 | Language quality | 5 | −2 per typo |
 
-## 5. Output
+## 5. Compliant improvement plan
+
+After the audit, write a module-by-module plan (see SKILL.md Step 8b): hero → problem/solution → features/benefits → Q&A → own-product comparison chart → lifestyle → Q&A/ingredients → Brand Story. For each module give type, headline, paste-ready copy, image brief and alt text.
+
+Blocked content (rejected by Amazon): reviews/testimonials, other-brand comparisons, prices/discounts/urgency, warranty/guarantee/returns text, contact details/QR codes/shipping, medical claims, unverified certifications or superlatives, unsupported eco claims.
+
+## 6. Output
 
 A+ module list (type, content, issue) → image-by-image table → variant check → alt-text check → sensitive claims → comparison values → consistency → module count → actions (P0/P1/P2, exactly what to change).

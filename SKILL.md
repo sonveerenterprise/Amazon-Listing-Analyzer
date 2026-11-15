@@ -195,7 +195,9 @@ P0 items go in a red box at the top regardless of score: title over limit; banne
 ### Step 11 — Competitor snapshot (always run; always in the detailed report)
 Use the main keyword's live search page (same marketplace, language parameter) in the browser.
 
-1. **Pick competitors:** the top 5 **organic** results other than this ASIN (skip "Sponsored"). If the user names competitor ASINs, use those instead.
+1. **Pick like-for-like competitors.** First identify what drives this product's price and positioning: base ingredient or formula (e.g. allulose vs erythritol), concentration (1:1 vs 2x–5x), form (powder, drops, sachets, syrup), certification (organic) and pack size. Then search the terms that describe that exact type (e.g. "allulose monk fruit sweetener", "monk fruit sweetener with allulose") and keep only organic results that match it, judged from the title and the ingredients on the product page. Pick the top 5 by ratings. If the user names competitor ASINs, use those instead.
+   - Never compare unit prices against a different formula or form (e.g. an allulose blend vs cheaper erythritol blends). If the main keyword's page 1 is mostly a different type, say so in one line and keep them out of the price comparison.
+   - **Price position:** collect unit prices from all like-for-like listings found (aim for 20+), and report min / median / max and where this ASIN sits (percentile). Only call the price "premium" when it's clearly above the like-for-like median.
 2. **Matrix** (one row per product, this ASIN first, in bold):
 
 | Product | Price | Unit price (₹/100 g or per unit) | Rating | Ratings | Title length | Images | Video | A+ modules | Brand Story |
@@ -204,7 +206,7 @@ Use the main keyword's live search page (same marketplace, language parameter) i
    Price, unit price, rating and ratings count come from the search result card; title length, images (`hiRes` count), video, A+ module count (`#aplus .aplus-module`) and Brand Story from each product page. Flag competitor titles over the marketplace limit.
 3. **Sponsored visibility:** count the sponsored placements on page 1 for the main keyword, list the brands, and say whether this ASIN appears.
 4. **Review topics ("Customers say"):** on the rendered product page, read the aspect buttons (aria-label like "Positive aspect, quality, 2534 mentions"). Compare this ASIN with the top 2–3 competitors as positive / mixed / negative with mention counts, and note the star distribution (e.g. % of 1-star). Highlight category-wide concerns (e.g. authenticity mixed for everyone) as positioning opportunities.
-5. **Key findings:** 3–5 points: price position (premium/discount vs. median unit price and why it is or isn't justified in the text), claims competitors use in titles that this listing lacks, content gaps (images, video, A+, Brand Story), ad visibility gap, review-topic gaps.
+5. **Key findings:** 3–5 points: price position vs. the like-for-like median (and cost per serving if it helps answer "value for money" complaints; never put prices in bullets), the top category complaints from competitor "Customers say" topics and how this listing can pre-empt them, claims competitors use in titles that this listing lacks, content gaps (images, video, A+, Brand Story), ad visibility gap, review-topic gaps.
 
 Never estimate PPC spend, market share, sales, deal frequency or price history; they can't be measured from public pages. Say "not available" if asked.
 

@@ -44,6 +44,7 @@
   .small { font-size:12px; color:#666; }
   .footer { color:#888; font-size:12px; text-align:center; margin-top:20px; padding:12px; }
   @media (max-width:600px){ body{padding:12px} .img-card{flex-direction:column} table{display:block; overflow-x:auto} }
+  .warning-note { background:#fff8ef; border:1px solid #ffd9a0; border-radius:6px; padding:10px 14px; font-size:13px; margin:8px 0; }
 </style>
 </head>
 <body>
@@ -142,6 +143,21 @@
   <div class="callout"><strong>Summary:</strong> {KW_SUMMARY}</div>
   <table><tr><th>Keyword</th><th>Title</th><th>Highlights</th><th>Bullets</th><th>A+</th><th>Status</th></tr>{KW_ROWS}</table>
   <p style="font-size:14px"><strong>Backend search terms (suggestion):</strong> <code>{SEARCH_TERMS}</code></p>
+</div>
+
+<div class="section">
+  <h2>🖍️ Keyword usage (Scribbles) <span class="small">(current live listing · uses per word and phrase)</span></h2>
+  <div class="callout">Chip colour = best place used (green title · purple highlights · blue bullets · orange description · teal backend · red not used); ×n = total uses.</div>
+  <h3>Words ({W_USED} / {W_TOTAL} used · {W_PCT}%)</h3>
+  <div>{WORD_CHIPS}</div>
+  <table><tr><th>Word</th><th class="center">Title</th><th class="center">Highlights</th><th class="center">Bullets</th><th class="center">Description</th><th class="center">Backend</th><th class="center">Total</th></tr>{WORD_ROWS}</table>
+  <h3>Phrases ({P_USED} / {P_TOTAL} used · {P_PCT}%)</h3>
+  <div>{PHRASE_CHIPS}</div>
+  <table><tr><th>Phrase</th><th class="center">Title</th><th class="center">Highlights</th><th class="center">Bullets</th><th class="center">Description</th><th class="center">Backend</th><th class="center">Total</th></tr>{PHRASE_ROWS}</table>
+  <h3>Not used yet</h3>
+  <p style="font-size:14px"><b>Words:</b> {UNUSED_WORDS}</p>
+  <p style="font-size:14px"><b>Phrases:</b> {UNUSED_PHRASES}</p>
+  <div class="warning-note"><b>Remark:</b> Backend search terms can only be measured after Seller Central login/authorization, or if the seller pastes them. Until then, the Backend column shows "–".</div>
 </div>
 
 <div class="section">

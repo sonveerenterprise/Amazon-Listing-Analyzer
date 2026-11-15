@@ -94,6 +94,18 @@ One topic per bullet; no repetition; order = core benefit → supporting facts �
 - Never recommend sensitive or regulated words (disease terms, warranty claims) as keywords, even if searched.
 - Suggest backend search terms (no brand names, no repetition of title words; local-language and phonetic spellings are useful).
 
+### Step 3A — Keyword usage, Scribbles-style (always; in the detailed report)
+Show how many times each target **word** and **phrase** is used in the **current live listing** (not the rewrite).
+
+1. Lists: 20–30 single words and 15–25 phrases from keyword mining (Step 3B), the rank check and the competitor keyword gap.
+2. Count whole-word, case-insensitive matches in title, Item Highlights, each bullet, description and backend search terms. "sugar" must not count inside "sugarfree"; treat "-" and "–" as the same.
+3. Output per list (Words, then Phrases):
+   - Header "Words (used / total · %)" with a progress bar.
+   - Coloured chips with the total count (×n). Colour = best place used: green title · purple highlights · blue bullets · orange description · teal backend only · red not used.
+   - A table: keyword → title → highlights → bullets → description → backend → total, sorted by total.
+   - A "Not used yet" line for words and for phrases.
+4. **Remark (always print):** "Backend search terms can only be measured after Seller Central login/authorization, or if the seller pastes them. Until then, the Backend column shows '–'."
+
 ### Step 3B — Rank by keyword (always run; always in the detailed report)
 Run this in every ASIN check, and include the table in every detailed HTML report. A free, Cerebro-style keyword table built from live public pages only.
 
@@ -278,7 +290,7 @@ Tone: professional and factual by default (or friendly for food and home). Never
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title, highlights and description lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, import duty and landed cost (non-India marketplaces only), action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, keyword usage (Scribbles), rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, import duty and landed cost (non-India marketplaces only), action list, data collection notes.
 
 ### Step 14 — Import duty and landed cost (only for listings outside India)
 Run when the marketplace isn't amazon.in and the product ships from India (or another origin the user names). Include in the detailed report.

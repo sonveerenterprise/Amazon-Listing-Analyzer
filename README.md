@@ -3,6 +3,7 @@
 Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives paste-ready fixes.
 
 - Five weighted scores: compliance, attributes, selling-point coverage, bullet clarity, buyer pain points
+- Keyword usage, Scribbles-style: every word and phrase with its use count per field and colour (backend terms measurable only after Seller Central login)
 - Live rank by keyword, Cerebro-style (organic and sponsored rank, Amazon suggestion rank, match type, competing products, sponsored ASINs, title density, keyword distribution, word frequency) in every report — free public data, no search-volume estimates
 - Keyword indexing check (is each word indexed for the ASIN, with a control test) in every report
 - Ready-to-paste optimized listing first (title, highlights, bullets, description, backend terms) with keyword coverage before → after and competitor keyword gap

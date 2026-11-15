@@ -9,7 +9,11 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 - Add-on checks: keywords, sensitive claims (FSSAI for India), IP risk, consistency, image-by-image review, nutrition table and lab parameters, A+, Rufus/Alexa (AEO)
 - English HTML report on request
 
-## Install
+## Web app
+
+A web app version (enter an ASIN or paste a listing, get a scored report) is in [`web/`](web/README.md).
+
+## Install (Claude Code skill)
 
 1. Clone into your Claude Code skills folder:
    ```bash

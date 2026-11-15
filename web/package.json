@@ -1,0 +1,28 @@
+{
+  "name": "amazon-listing-analyzer-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "knowledge": "node scripts/build-knowledge.mjs",
+    "dev": "npm run knowledge && next dev",
+    "build": "npm run knowledge && next build",
+    "start": "next start",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "cheerio": "^1.2.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

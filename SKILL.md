@@ -278,7 +278,21 @@ Tone: professional and factual by default (or friendly for food and home). Never
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title, highlights and description lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, import duty and landed cost (non-India marketplaces only), action list, data collection notes.
+
+### Step 14 — Import duty and landed cost (only for listings outside India)
+Run when the marketplace isn't amazon.in and the product ships from India (or another origin the user names). Include in the detailed report.
+
+1. **HS code:** suggest the most likely code from the product type and ingredients (e.g. honey 0409; food preparations/sweetener drops 2106.90; fruit juices 2009) and say it must be confirmed with a customs broker.
+2. **Look up live rates from official sources only** (never a hard-coded table; tariffs change often):
+   - US: USITC HTS REST, `https://hts.usitc.gov/reststop/search?keyword={HS or product}` → "general" rate (India has no GSP, so the general rate applies), plus Chapter 99 lines for the origin (search `keyword=India`; e.g. 9903.01.84 +25%, 9903.02.26 +25%, 9903.05.44 +10% as listed on 15 Nov 2026). Report which lines exist and that applicability depends on product, date and exemptions.
+   - UK: `https://www.trade-tariff.service.gov.uk/api/v2/commodities/{10-digit code}` → third-country duty, any India preference, VAT (food is often 0%).
+   - EU: TARIC (`ec.europa.eu/taxation_customs/dds2/taric`) → third-country duty and the import VAT of the destination country.
+   - Others (UAE, Saudi, Australia, Canada, Japan): the official customs tariff site of that country; if not reachable, say "rate not verified".
+3. **Valuation basis:** US duty is charged on the **FOB/transaction value**; the EU and UK charge duty on **CIF** (value + freight + insurance), and import VAT on CIF + duty.
+4. **Landed cost table** per shipment and per unit: product value, freight, insurance, base duty, additional duties, import VAT/GST (if not recoverable), fees (US: MPF 0.3464% with min/max, HMF 0.125% for sea), broker/clearance and port fees, inland freight to the Amazon warehouse. Clearly mark every **assumed** input (FOB price, freight, quantity) and let the user replace them; show the formula.
+5. **Compliance notes for food:** US FDA food facility registration and prior notice; EU/UK labelling and novel-food status for ingredients like allulose; label language and units.
+6. Never present rates as guaranteed; add "Confirm with a licensed customs broker before shipping." Amazon referral/FBA fees aren't part of landed cost; mention them separately if the user asks for margin.
 
 ### Mode A — New product (not yet listed)
 When the user gives product details (or local materials) instead of an ASIN:

@@ -7,6 +7,7 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 - Keyword indexing check (is each word indexed for the ASIN, with a control test) in every report
 - Ready-to-paste optimized listing first (title, highlights, bullets, description, backend terms) with keyword coverage before → after and competitor keyword gap
 - Mode A: build a full listing for a new product from product details
+- For listings outside India: import duty and landed cost from official tariff sources (US HTS, UK Trade Tariff, EU TARIC)
 - A+ audit plus a compliant module-by-module A+ plan (headline, copy, image brief, alt text) in every report
 - Starter negative keywords for Sponsored Products (wrong form, wrong formula, wrong product, unsupported claim), built from real search suggestions
 - Competitor snapshot (top 5 organic: price, unit price, rating, content, ads, "Customers say" topics) in every report

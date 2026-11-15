@@ -236,6 +236,15 @@
   <table><tr><th>Check</th><th>Score</th><th>How to improve</th></tr>{AEO_ROWS}</table>
 </div>
 
+<!-- Only for listings outside India -->
+<div class="section">
+  <h2>🌍 Import duty and landed cost <span class="small">({ORIGIN} → {DESTINATION} · HS {HS_CODE}, to be confirmed by a broker)</span></h2>
+  <table><tr><th>Item</th><th>Rate / basis</th><th>Amount</th><th>Source</th></tr>{LANDED_ROWS}</table>
+  <div class="callout"><strong>Landed cost per unit:</strong> {LANDED_PER_UNIT} <span class="small">(assumed inputs marked; replace with your own)</span></div>
+  <ul>{IMPORT_COMPLIANCE_NOTES}</ul>
+  <p class="small">Rates looked up on {RATE_DATE} from official sources. Tariffs change often. Confirm with a licensed customs broker before shipping.</p>
+</div>
+
 <div class="section">
   <h2>🎯 Action list</h2>
   {SUGGESTIONS}

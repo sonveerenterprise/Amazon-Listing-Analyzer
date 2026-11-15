@@ -5,6 +5,8 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 - Five weighted scores: compliance, attributes, selling-point coverage, bullet clarity, buyer pain points
 - Live rank by keyword, Cerebro-style (organic and sponsored rank, Amazon suggestion rank, match type, competing products, sponsored ASINs, title density, keyword distribution, word frequency) in every report — free public data, no search-volume estimates
 - Keyword indexing check (is each word indexed for the ASIN, with a control test) in every report
+- Ready-to-paste optimized listing first (title, highlights, bullets, description, backend terms) with keyword coverage before → after and competitor keyword gap
+- Mode A: build a full listing for a new product from product details
 - A+ audit plus a compliant module-by-module A+ plan (headline, copy, image brief, alt text) in every report
 - Competitor snapshot (top 5 organic: price, unit price, rating, content, ads, "Customers say" topics) in every report
 - Add-on checks: keywords, sensitive claims (FSSAI for India), IP risk, consistency, image-by-image review, nutrition table and lab parameters, A+, Rufus/Alexa (AEO)

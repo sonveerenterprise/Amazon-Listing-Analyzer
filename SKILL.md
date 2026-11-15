@@ -32,6 +32,7 @@ Scoring rules: `references/scoring_criteria.md`. Calculator: `scripts/calculate_
 3. Pasted listing text (title, highlights, bullets, attributes).
 4. Competitor ASINs (optional).
 5. Local materials for unlisted products: an image folder plus a text file; the user must state marketplace and language.
+6. Product details only (new product, no ASIN yet): use **Mode A** (see after Step 13) to build a listing from scratch.
 6. Seller Central screenshots or lab reports shared by the user (use them to correct anything the public page can't show).
 
 ## Marketplace rules
@@ -237,11 +238,35 @@ Never estimate PPC spend, market share, sales, deal frequency or price history; 
 
 ### Step 11B — Extra competitor comparison (optional)
 
-### Step 12 — Action list
-Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title and highlights lengths with a script before giving them.
+### Step 12 — Optimized listing, ready to paste (always; first section of the detailed report)
+The seller's workflow is: copy → paste into Seller Central → done. Always deliver the full rewritten listing, not only advice.
+
+1. **Title** (with character count; India and US ≤75).
+2. **Item Highlights** (with character count; India ≤75).
+3. **5 bullets**: `HEADER: fact + benefit`, one topic each, numbers first (dose, size, servings, formula). Never use a bullet for warranty, guarantee or "social proof".
+4. **Product description** (≤2,000 characters): problem → how it works → ingredients/what's inside → uses → how to use → what's in the box. Embed keywords not used above. Plain text, no HTML, no claims you wouldn't put in bullets.
+5. **Backend search terms**: words not already in title/highlights/bullets, from the indexing check and keyword mining; no brand names; ≤249 bytes. Terms that would be risky as visible claims (e.g. "natural" on a product with a preservative) may go here only.
+
+**Competitor keyword gap:** read the full titles (and bullets) of the top 5 like-for-like competitors (Step 11), list words used by 2+ of them that this listing lacks, and add the safe ones. List what was **not** copied on purpose (disease claims, "organic"/"pure" without proof, "no chemicals").
+
+**Keyword coverage before → after:** build the keyword list from Steps 3, 3B, 3C and the competitor gap (15–20 keywords). Table: keyword → before (where found) → after → where added. Report coverage % before and after. Never show search volumes unless the user provides paid-tool data.
+
+**Before → after table** for title, highlights, each bullet, description and backend terms. Below it, list the fixes that need seller action (images, A+, attributes), since text alone can't fix them.
+
+Tone: professional and factual by default (or friendly for food and home). Never "urgent", scarcity or FOMO.
+
+### Step 12B — Action list
+Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title, highlights and description lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections: scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, competitor snapshot, sensitive claims, IP, consistency, nutrition check (food), A+, AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, action list, data collection notes.
+
+### Mode A — New product (not yet listed)
+When the user gives product details (or local materials) instead of an ASIN:
+1. Collect: product type, brand, key attributes (size, material/ingredients, quantity), 3–5 features, target buyer, top 3 uses, what's in the box, marketplace.
+2. Keywords: autocomplete mining for 1–2 seed terms (Step 3B method) plus the top 5 like-for-like competitors' titles and bullets (competitor keyword gap). If the user names competitor ASINs, use those.
+3. Tier keywords: core → title; secondary → highlights and bullets (one per bullet); long-tail → description; rest → backend terms.
+4. Deliver the Step 12 ready-to-paste listing, the keyword coverage table, sensitive-claim check (Step 5) and a compliant A+ plan (Step 8b). Skip scoring, rank and indexing (the ASIN doesn't exist yet).
 
 ## Rules
 

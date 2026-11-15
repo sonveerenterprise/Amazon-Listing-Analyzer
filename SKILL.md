@@ -151,6 +151,25 @@ Output one table:
 
 Fix = where to add the word (title, highlights, bullets or backend search terms), respecting character limits and claim rules. Never recommend competitor brand names in backend terms.
 
+### Step 3D — Starter negative keywords for ads (always; in the detailed report)
+A **pre-emptive** list for Sponsored Products, built from the autocomplete mining in Step 3B (real shopper searches) and the listing facts. It blocks obvious waste before it happens; it is **not** a waste analysis (that needs the seller's Search Term Report).
+
+Start with a short **summary**: what the list is and isn't, and a table of groups → number of terms → match type.
+
+Then four groups, each in its own paste-ready code block (one term per line):
+1. **Negative phrase — wrong form or pack:** suggestions asking for a different format or size than this ASIN (e.g. for drops: powder, 1 kg, jar, sachets, pellets, tablets, bulk; for a powder: drops, liquid, syrup).
+2. **Negative phrase — wrong formula:** ingredients or variants this product doesn't have (e.g. "with erythritol", "allulose" on a product without allulose, "brown", "golden").
+3. **Negative phrase — wrong product:** different products that share the seed word (e.g. chocolate, cookies, biscuits, hair oil, chikki).
+4. **Negative exact — unsupported claim:** searches for an attribute the product can't claim (e.g. "… organic" when not certified). Use exact so the core term isn't blocked.
+
+For each group, add one line saying which real suggestions it came from.
+
+Rules:
+- Amazon Sponsored Products supports only **negative exact** and **negative phrase**; never suggest negative broad.
+- Never negate the core keyword, close substitutes on the same format (e.g. "stevia drops" for monk fruit drops), or terms the product ranks for (Step 3B).
+- Don't add competitor brand names automatically; that's the seller's choice (negate if they waste spend, keep for conquest campaigns).
+- Don't estimate savings or ACoS; say real negatives come from search terms with 10+ clicks and 0 orders.
+
 ### Step 4 — IP and misrepresentation risk (add-on)
 Trademarks (other brands' names in title/bullets/images), copyright, known patent risks (flag only, not a legal opinion), certification marks used without right, naming that misrepresents the main ingredient. Levels: P0 confirmed / P1 risk signal / P2 preventive.
 
@@ -259,7 +278,7 @@ Tone: professional and factual by default (or friendly for food and home). Never
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title, highlights and description lengths with a script before giving them.
 
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, action list, data collection notes.
 
 ### Mode A — New product (not yet listed)
 When the user gives product details (or local materials) instead of an ASIN:

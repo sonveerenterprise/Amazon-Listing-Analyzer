@@ -196,3 +196,89 @@ describe("page parser", () => {
     expect(() => parseListingHtml("<html></html>", "B0ABCD1234", getMarketplace("IN"))).toThrow(FetchBlockedError);
   });
 });
+
+// ---------- Helium 10 ----------
+import fixtures from "./fixtures/h10.json";
+import { gatherH10, mapCompetitors, mapIndex, mapKeywords, unwrap } from "../lib/h10Data";
+import { checkPassword, isTeam, teamCookie, teamEnabled } from "../lib/team";
+
+describe("helium 10 data", () => {
+  const mk = getMarketplace("IN");
+  const fx = fixtures as Record<string, unknown>;
+
+  it("builds the listing and data from tool responses", async () => {
+    const calls: [string, Record<string, unknown>][] = [];
+    const { listing, h10 } = await gatherH10(async (name, args) => (calls.push([name, args]), fx[name]), "B0ABCD1234", mk, ["jungle honey"]);
+    expect(listing.title).toBe("ACME Raw Forest Honey 500 g Glass Jar");
+    expect(listing.highlights).toBe("Unprocessed Multiflora Honey");
+    expect(listing.bullets.length).toBe(3);
+    expect(listing.page).toMatchObject({ price: "₹449", imageCount: 3, bestSellersRank: "#120" });
+    expect(calls.map((c) => c[0])).toEqual(["retrieve_listing_by_asin", "get_listing_details", "get_keywords_by_asin", "search_competitors_by_asin", "check_asin_keyword_index"]);
+    // sorted by search volume
+    expect(h10.keywords?.rows.map((r) => r.phrase)).toEqual(["raw honey", "forest honey", "multiflora honey"]);
+    expect(h10.keywords?.rows[1]).toMatchObject({ organicRank: 3, organicPage: 1, sponsoredRank: null, amazonChoice: true, clickShare: 12.5 });
+    expect(h10.keywords?.rows[0].amazonChoice).toBe(false);
+    expect(h10.keywords?.total).toBe(212);
+    // the control is the best-ranked keyword, and the user's keyword is checked too
+    const indexArgs = calls[4][1].keywords as string[];
+    expect(indexArgs[0]).toBe("forest honey");
+    expect(indexArgs).toContain("jungle honey");
+    expect(h10.index).toMatchObject({ reliable: true });
+    expect(h10.index?.rows.find((r) => r.keyword === "jungle honey")?.indexed).toBe(false);
+    // own ASIN removed; price converted from paise
+    expect(h10.competitors?.map((c) => c.asin)).toEqual(["B0COMP00001", "B0COMP00002"]);
+    expect(h10.competitors?.[0]).toMatchObject({ price: 389, rating: 4.1, reviews: 2468, images: 9 });
+    expect(h10.details).toMatchObject({ lqs: 7.4, monthlySales: 1500, parentAsin: "B0PARENT01" });
+    expect(h10.warnings).toEqual([]);
+  });
+
+  it("withholds index results when the control keyword fails", () => {
+    const r = mapIndex({ results: [{ keyword: "forest honey", cumulative: false }, { keyword: "x", cumulative: false }] }, "forest honey");
+    expect(r.reliable).toBe(false);
+    expect(r.rows).toEqual([]);
+  });
+
+  it("keeps going when an optional tool fails, and fails when the listing is missing", async () => {
+    const { h10 } = await gatherH10(async (name) => {
+      if (name === "search_competitors_by_asin") throw new Error("timeout");
+      if (name === "get_keywords_by_asin") return { data: null, error: "rate_limited" };
+      return fx[name];
+    }, "B0ABCD1234", mk);
+    expect(h10.competitors).toBeUndefined();
+    expect(h10.keywords).toBeUndefined();
+    expect(h10.index).toBeUndefined();
+    expect(h10.warnings.length).toBe(2);
+    await expect(gatherH10(async () => ({ data: { product_name: "" }, error: null }), "B0ABCD1234", mk)).rejects.toThrow(/no listing/);
+  });
+
+  it("tolerates odd shapes", () => {
+    expect(mapKeywords({}).rows).toEqual([]);
+    expect(mapCompetitors({ competitor_products: [null, { title: "x" }] }, mk, "A")).toEqual([]);
+    expect(() => unwrap({ data: null, error: { message: "boom" } })).toThrow("boom");
+  });
+
+  it("validates Helium 10 data coming back from the browser", async () => {
+    const { h10 } = await gatherH10(async (name) => fx[name], "B0ABCD1234", mk);
+    const ok = parseListing({ marketplace: "IN", title: "t", h10: JSON.parse(JSON.stringify(h10)) });
+    expect("listing" in ok && ok.listing.h10?.keywords?.rows.length).toBe(3);
+    expect("error" in parseListing({ marketplace: "IN", title: "t", h10: { nonsense: true } })).toBe(true);
+  });
+});
+
+describe("team sign-in", () => {
+  const req = (cookie: string) => new Request("http://x/", { headers: { cookie } });
+  it("is off without a password and checks the cookie when on", () => {
+    delete process.env.TEAM_PASSWORD;
+    expect(teamEnabled()).toBe(false);
+    expect(isTeam(req("ala_team="))).toBe(false);
+    expect(checkPassword("")).toBe(false);
+    process.env.TEAM_PASSWORD = "correct-horse";
+    expect(checkPassword("correct-horse")).toBe(true);
+    expect(checkPassword("wrong")).toBe(false);
+    const value = teamCookie().split(";")[0];
+    expect(isTeam(req(`a=b; ${value}`))).toBe(true);
+    expect(isTeam(req("ala_team=deadbeef"))).toBe(false);
+    expect(isTeam(req(""))).toBe(false);
+    delete process.env.TEAM_PASSWORD;
+  });
+});

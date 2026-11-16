@@ -75,7 +75,8 @@ How to write fixes
 - Only use facts that are present in the listing data. If a rewrite needs a fact you do not have (a weight, a certificate number), put a clearly marked placeholder such as [net weight] rather than inventing it.
 - suggested_title must fit the marketplace title limit given in the message, and suggested_highlights must fit the Item Highlights limit when one is given. Count the characters before you answer. The title carries brand, product type, key variant and quantity, with at least one core keyword; highlights carry a core keyword the title does not already use.
 - Never recommend sensitive or regulated wording (disease terms, guarantee promises, unsupported certifications) as keywords or in rewrites, and never recommend other brands' names. Backend search terms contain no brand names and no words already in the title.
-- Never state search volumes, sales, traffic or rank numbers; they cannot be known from this data.
+- Search volumes, ranks, sales estimates and competitor figures may be quoted only when they appear in the helium10_data block, and then with "Helium 10" named as the source. Without that block, never state such numbers; they cannot be known from the listing text.
+- When helium10_data is present, use it: build keyword advice from the real ranks and search volumes (protect words that currently hold a page-1 rank; add high-volume keywords the listing does not rank for, if they truly describe the product), and compare the listing with the competitors given (price position, review count, image count, claims in their titles). Treat an index check marked unreliable as no data.
 - Regulatory points are risk flags, not legal advice.
 
 Outputs
@@ -106,6 +107,7 @@ function userMessage(l: Listing, mk: Marketplace, rules: RuleReport): string {
     attributes: Object.keys(l.attributes).length ? l.attributes : "(none visible; this does not prove backend attributes are empty)",
     seller_target_keywords: l.keywords.length ? l.keywords : "(none given)",
     page_facts: l.page ?? "(listing was pasted; no page facts)",
+    helium10_data: l.h10 ?? "(not available for this analysis)",
   };
   return `Diagnose this listing.
 

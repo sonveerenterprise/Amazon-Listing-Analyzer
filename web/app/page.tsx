@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MARKETPLACES, getMarketplace } from "@/lib/marketplaces";
-import type { CategoryKey } from "@/lib/types";
+import type { CategoryKey, H10Data } from "@/lib/types";
 import Report, { type Analysis } from "./Report";
 
 const CATEGORIES: [CategoryKey, string][] = [
@@ -15,6 +15,12 @@ const CATEGORIES: [CategoryKey, string][] = [
   ["outdoor", "Outdoor"],
   ["other", "Other"],
 ];
+
+interface Status {
+  teamEnabled: boolean;
+  team: boolean;
+  h10: { connected: boolean; usage: { limit: number; used: number; remaining: number } | null } | null;
+}
 
 interface Form {
   marketplace: string;
@@ -53,6 +59,12 @@ export default function Page() {
   const [page, setPage] = useState<Analysis["listing"]["page"]>(undefined);
   const [lookup, setLookup] = useState("");
   const [aiAvailable, setAiAvailable] = useState(false);
+  const [status, setStatus] = useState<Status>({ teamEnabled: false, team: false, h10: null });
+  const [h10, setH10] = useState<H10Data | undefined>(undefined);
+  const [teamOpen, setTeamOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [teamMsg, setTeamMsg] = useState<string | null>(null);
+  const [loadingH10, setLoadingH10] = useState(false);
   const [useAi, setUseAi] = useState(true);
   const [fetching, setFetching] = useState(false);
   const [analysing, setAnalysing] = useState(false);
@@ -61,9 +73,98 @@ export default function Page() {
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const reportRef = useRef<HTMLDivElement>(null);
 
+  async function refreshStatus() {
+    try {
+      const s = await (await fetch("/api/status")).json();
+      setAiAvailable(Boolean(s.ai));
+      setStatus({ teamEnabled: Boolean(s.teamEnabled), team: Boolean(s.team), h10: s.h10 ?? null });
+    } catch {
+      setAiAvailable(false);
+    }
+  }
+
   useEffect(() => {
-    fetch("/api/status").then((r) => r.json()).then((s) => setAiAvailable(Boolean(s.ai))).catch(() => setAiAvailable(false));
+    refreshStatus();
+    const flag = new URLSearchParams(window.location.search).get("h10");
+    if (flag) {
+      setTeamOpen(true);
+      setTeamMsg(
+        flag === "connected" ? "Helium 10 is connected." : flag === "cancelled" ? "The Helium 10 sign-in was cancelled." : flag === "signin" ? "Sign in to the team area first, then connect Helium 10." : "The Helium 10 sign-in did not complete. Try connecting again.",
+      );
+      window.history.replaceState(null, "", window.location.pathname);
+    }
   }, []);
+
+  async function teamLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setTeamMsg(null);
+    const res = await fetch("/api/team/login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password }) }).catch(() => null);
+    if (!res?.ok) {
+      setTeamMsg((await res?.json().catch(() => null))?.error ?? "Could not reach the server.");
+      return;
+    }
+    setPassword("");
+    await refreshStatus();
+  }
+
+  async function teamLogout() {
+    await fetch("/api/team/logout", { method: "POST" }).catch(() => null);
+    setH10(undefined);
+    await refreshStatus();
+  }
+
+  async function connectH10() {
+    setTeamMsg(null);
+    const res = await fetch("/api/h10/connect", { method: "POST" }).catch(() => null);
+    const data = await res?.json().catch(() => null);
+    if (!res?.ok || !data?.url) {
+      setTeamMsg(data?.error ?? "Could not start the Helium 10 sign-in.");
+      return;
+    }
+    window.location.href = data.url;
+  }
+
+  async function disconnectH10() {
+    await fetch("/api/h10/disconnect", { method: "POST" }).catch(() => null);
+    setH10(undefined);
+    await refreshStatus();
+  }
+
+  async function loadH10() {
+    if (!lookup.trim()) return;
+    setLoadingH10(true);
+    setFetchMsg(null);
+    try {
+      const keywords = form.keywords.split(/[\n,]/).map((k) => k.trim()).filter(Boolean);
+      const res = await fetch("/api/h10/load", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ input: lookup, marketplace: form.marketplace, keywords }) });
+      const data = await res.json();
+      if (!res.ok) {
+        setFetchMsg({ kind: "err", text: data.error ?? "Helium 10 could not load this listing." });
+        if (data.notConnected) refreshStatus();
+        return;
+      }
+      const l = data.listing;
+      const top = ((data.h10 as H10Data).keywords?.rows ?? []).slice(0, 10).map((r) => r.phrase);
+      setForm((f) => ({
+        ...f,
+        marketplace: l.marketplace,
+        asin: l.asin,
+        title: l.title,
+        highlights: l.highlights,
+        bullets: l.bullets.join("\n"),
+        description: l.description,
+        keywords: f.keywords.trim() ? f.keywords : top.join(", "),
+      }));
+      setPage(l.page);
+      setH10(data.h10);
+      if (data.usage) setStatus((s) => ({ ...s, h10: { connected: true, usage: data.usage } }));
+      setFetchMsg({ kind: "info", text: `Loaded from Helium 10. ${l.warnings.join(" ")} Check the fields below, then analyse.` });
+    } catch {
+      setFetchMsg({ kind: "err", text: "Could not reach the server. Check your connection and try again." });
+    } finally {
+      setLoadingH10(false);
+    }
+  }
 
   const mk = getMarketplace(form.marketplace);
   const set = <K extends keyof Form>(k: K, v: Form[K]) => setForm((f) => ({ ...f, [k]: v }));
@@ -94,6 +195,7 @@ export default function Page() {
         attributes: Object.entries(l.attributes as Record<string, string>).map(([k, v]) => `${k}: ${v}`).join("\n"),
       }));
       setPage(l.page);
+      setH10(undefined);
       setFetchMsg({ kind: l.warnings.length ? "warn" : "info", text: l.warnings.length ? `Fetched. ${l.warnings.join(" ")}` : "Fetched. Check the fields below, then analyse." });
     } catch {
       setFetchMsg({ kind: "err", text: "Could not reach the server. Check your connection and try again." });
@@ -119,6 +221,8 @@ export default function Page() {
         attributes: parseAttributes(form.attributes),
         keywords: form.keywords.split(/[\n,]/).map((k) => k.trim()).filter(Boolean),
         page,
+        // Helium 10 data only belongs to the ASIN it was loaded for.
+        h10: h10 && /^[A-Z0-9]{10}$/.test(form.asin) ? h10 : undefined,
       };
       const res = await fetch("/api/analyze", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ listing, useAi: aiAvailable && useAi }) });
       const data = await res.json();
@@ -141,6 +245,36 @@ export default function Page() {
         <h1>Amazon Listing Analyzer</h1>
         <p className="lede">Score a listing on compliance, attributes, selling points, clarity and buyer fit, and get fixes you can paste into Seller Central.</p>
 
+        {status.teamEnabled ? (
+          <div className="card team">
+            {!status.team ? (
+              teamOpen ? (
+                <form className="row" onSubmit={teamLogin}>
+                  <div className="grow">
+                    <label htmlFor="teampw">Team password</label>
+                    <input id="teampw" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" />
+                  </div>
+                  <button type="submit" disabled={!password}>Sign in</button>
+                </form>
+              ) : (
+                <button type="button" className="small" onClick={() => setTeamOpen(true)}>Team sign-in</button>
+              )
+            ) : (
+              <div className="row" style={{ alignItems: "center", justifyContent: "space-between" }}>
+                <div>
+                  <strong>Team mode.</strong>{" "}
+                  {status.h10?.connected ? `Helium 10 connected${status.h10.usage ? ` · ${status.h10.usage.remaining} of ${status.h10.usage.limit} calls left` : ""}.` : "Helium 10 is not connected."}
+                </div>
+                <div className="row">
+                  {status.h10?.connected ? <button type="button" className="small" onClick={disconnectH10}>Disconnect Helium 10</button> : <button type="button" className="small primary" onClick={connectH10}>Connect Helium 10</button>}
+                  <button type="button" className="small" onClick={teamLogout}>Sign out</button>
+                </div>
+              </div>
+            )}
+            {teamMsg ? <div className="notice info" style={{ margin: "10px 0 0" }} role="status">{teamMsg}</div> : null}
+          </div>
+        ) : null}
+
         <form className="card" onSubmit={doFetch}>
           <h2>1. Load a listing</h2>
           <div className="row">
@@ -154,8 +288,16 @@ export default function Page() {
               <label htmlFor="lookup">ASIN or product link <span className="hint">(optional)</span></label>
               <input id="lookup" type="text" value={lookup} onChange={(e) => setLookup(e.target.value)} placeholder="B0XXXXXXXX or https://www.amazon.in/dp/…" autoComplete="off" />
             </div>
-            <button type="submit" disabled={fetching || !lookup.trim()}>{fetching ? "Fetching…" : "Fetch listing"}</button>
+            <button type="submit" disabled={fetching || loadingH10 || !lookup.trim()}>{fetching ? "Fetching…" : status.team ? "Fetch from Amazon" : "Fetch listing"}</button>
+            {status.team && status.h10?.connected ? (
+              <button type="button" className="primary" onClick={loadH10} disabled={fetching || loadingH10 || !lookup.trim()}>{loadingH10 ? "Loading… up to a minute" : "Load from Helium 10"}</button>
+            ) : null}
           </div>
+          {status.team && status.h10?.connected ? (
+            <p className="muted" style={{ margin: "8px 0 0", fontSize: 13 }}>
+              Helium 10 adds keyword ranks, an index check and competitors. Each load uses 5 Helium 10 calls{status.h10.usage ? `; ${status.h10.usage.remaining} of ${status.h10.usage.limit} left this period` : ""}.
+            </p>
+          ) : null}
           {fetchMsg ? <div className={`notice ${fetchMsg.kind}`} style={{ margin: "12px 0 0" }} role="status">{fetchMsg.text}</div> : <p className="muted" style={{ margin: "10px 0 0", fontSize: 13 }}>Amazon sometimes blocks automatic fetching. You can always paste the listing text below instead.</p>}
         </form>
 

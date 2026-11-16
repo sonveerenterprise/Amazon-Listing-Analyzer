@@ -2,6 +2,7 @@ import { AiUnavailableError, aiEnabled, runAi, type AiReport } from "@/lib/ai";
 import { allow, clientIp } from "@/lib/rateLimit";
 import { runRules } from "@/lib/rules";
 import { buildScorecard, mergeItems } from "@/lib/scoring";
+import { isTeam } from "@/lib/team";
 import { parseListing } from "@/lib/validate";
 
 export const dynamic = "force-dynamic";
@@ -12,6 +13,8 @@ export async function POST(req: Request) {
   const parsed = parseListing(body?.listing);
   if ("error" in parsed) return Response.json({ error: parsed.error }, { status: 400 });
   const { listing } = parsed;
+  // Helium 10 data is a team feature; drop it from anyone else's request.
+  if (listing.h10 && !isTeam(req)) delete listing.h10;
 
   const rules = runRules(listing);
   let ai: AiReport | null = null;

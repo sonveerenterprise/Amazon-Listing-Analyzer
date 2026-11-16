@@ -26,6 +26,32 @@ export const ListingInput = z.object({
       bestSellersRank: z.string().max(600).optional(),
     })
     .optional(),
+  h10: z.unknown().optional(),
+});
+
+const n = z.number().nullable();
+// Helium 10 data comes back from the browser, so it is re-checked and capped.
+const H10Input = z.object({
+  fetchedAt: z.string().max(40),
+  details: z
+    .object({
+      lqs: n, price: n, rating: n, reviews: n, bsr: n,
+      subcategories: z.array(z.object({ name: z.string().max(120), bsr: z.number() })).max(10),
+      monthlySales: n, monthlyRevenue: n, images: n, variations: n,
+      seller: z.string().max(200), parentAsin: z.string().max(20),
+    })
+    .optional(),
+  keywords: z
+    .object({
+      total: n,
+      rows: z
+        .array(z.object({ phrase: z.string().max(200), searchVolume: n, organicRank: n, organicPage: n, sponsoredRank: n, sponsoredPage: n, competingProducts: n, titleDensity: n, amazonChoice: z.boolean(), clickShare: n, convShare: n }))
+        .max(60),
+    })
+    .optional(),
+  index: z.object({ reliable: z.boolean(), note: z.string().max(400), rows: z.array(z.object({ keyword: z.string().max(200), indexed: z.boolean() })).max(60) }).optional(),
+  competitors: z.array(z.object({ asin: z.string().max(12), title: z.string().max(400), brand: z.string().max(200), price: n, rating: n, reviews: n, images: n, variations: n, monthlySales: n, bsr: n })).max(10).optional(),
+  warnings: z.array(z.string().max(400)).max(10),
 });
 
 export function parseListing(body: unknown): { listing: Listing } | { error: string } {
@@ -33,5 +59,11 @@ export function parseListing(body: unknown): { listing: Listing } | { error: str
   if (!r.success) return { error: r.error.issues.map((i) => `${i.path.join(".") || "input"}: ${i.message}`).join("; ") };
   const l = r.data;
   if (Object.keys(l.attributes).length > 150) return { error: "Too many attributes." };
-  return { listing: { ...l, bullets: l.bullets.map((b) => b.trim()).filter(Boolean) } as Listing };
+  let h10: Listing["h10"];
+  if (l.h10 !== undefined && l.h10 !== null) {
+    const h = H10Input.safeParse(l.h10);
+    if (!h.success) return { error: "The Helium 10 data was not in the expected format. Load the listing again." };
+    h10 = h.data;
+  }
+  return { listing: { ...l, h10, bullets: l.bullets.map((b) => b.trim()).filter(Boolean) } as Listing };
 }

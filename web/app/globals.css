@@ -100,3 +100,8 @@ footer { color: var(--muted); font-size: 12px; margin-top: 24px; }
   .card { break-inside: avoid; border-color: #ccc; }
   main { max-width: none; padding: 0; }
 }
+.card.team { padding: 12px 18px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; }
+.facts > div { background: #f7f8fa; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; }
+.facts span { display: block; font-size: 12px; color: var(--muted); }
+.facts strong { font-size: 17px; }

@@ -17,6 +17,30 @@ npm run dev                  # http://localhost:3000
 
 `npm test` runs the unit tests. `npm run build && npm start` runs the production build.
 
+## Team features: Helium 10 data
+
+Signed-in team members can load a listing from Helium 10 instead of fetching it from Amazon. That adds a Helium 10 snapshot, rank by keyword (with search volume), a keyword index check and a competitor table to the report, and gives the AI analysis real rank data to work from. Public visitors never see or use Helium 10 data.
+
+Setup:
+
+1. Set `TEAM_PASSWORD` (8+ characters) and `APP_URL` (the app's public address, e.g. `https://analyzer.yourdomain.com`; for local use leave it unset) in `.env.local`, then restart the app.
+2. Open the app, click **Team sign-in** and enter the password.
+3. Click **Connect Helium 10** and sign in with the Helium 10 account. This is done once; the sign-in is stored on the server in `data/h10-auth.json` and never sent to browsers.
+4. Enter an ASIN and click **Load from Helium 10**.
+
+Each load uses 5 Helium 10 calls. The team bar shows how many are left this period, and the app refuses to load when fewer than 5 plus a reserve (`H10_RESERVE_CALLS`, default 20) remain. Helium 10 does not return the attribute table, so paste attributes if you want them checked.
+
+The index check includes a control: a keyword the listing already ranks for must come back as indexed, otherwise the results are withheld as unreliable.
+
+To try the team features without spending Helium 10 calls, run the local stand-in server with sample data:
+
+```bash
+node scripts/mock-h10.mjs
+H10_MCP_URL=http://localhost:3310/mcp TEAM_PASSWORD=some-password npm run dev
+```
+
+If you change `APP_URL`, click **Disconnect Helium 10** and connect again.
+
 ## Deploy
 
 Any Node host works. On Vercel, set the project's root directory to `web` and add `ANTHROPIC_API_KEY` as an environment variable. The AI analysis can take a minute or two, so the plan must allow function durations of that length (`maxDuration` is set to 300 seconds in `app/api/analyze/route.ts`).
@@ -30,6 +54,8 @@ Any Node host works. On Vercel, set the project's root directory to `web` and ad
 | Weighted five-dimension score | `lib/scoring.ts` |
 | Amazon page fetch and parser | `lib/fetchListing.ts` |
 | Claude analysis | `lib/ai.ts` |
+| Helium 10 connection and data mapping | `lib/h10Client.ts`, `lib/h10Data.ts` |
+| Team sign-in | `lib/team.ts` |
 | API routes | `app/api/*` |
 | UI | `app/page.tsx`, `app/Report.tsx` |
 
@@ -40,6 +66,7 @@ Scores only count rubric items that could be assessed from the data supplied; th
 ## Not built yet
 
 - **Accounts and billing.** There is no sign-up, login or payment. AI use is limited per IP address in memory (`AI_RATE_LIMIT_PER_HOUR`, default 5), which is per server instance; use a shared store before going public at scale.
-- **Live rank by keyword, keyword indexing check, competitor snapshot** (skill steps 3B, 3C, 11). These need Amazon search pages, which Amazon blocks for server requests; they need a paid data provider.
+- **Rank, indexing and competitor data for public visitors.** These come from Helium 10 and are team-only, because every load draws on one Helium 10 account's quota.
+- **Individual team accounts.** Team access is one shared password.
 - **Image, A+ and nutrition-table review.** The app analyses text only.
 - **Saved report history.**

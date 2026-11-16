@@ -34,6 +34,8 @@ export interface Listing {
     hasVideo?: boolean;
     bestSellersRank?: string;
   };
+  /** Helium 10 data, when a signed-in team member loaded the listing from it. */
+  h10?: H10Data;
 }
 
 export interface Finding {
@@ -86,4 +88,55 @@ export interface RuleReport {
   items: ItemScore[];
   keywordRows: KeywordRow[];
   facts: { titleLength: number; titleLimit: number; highlightsLength: number; highlightsLimit: number | null; bulletCount: number };
+}
+
+// ---------- Helium 10 (team only) ----------
+
+export interface H10KeywordRow {
+  phrase: string;
+  searchVolume: number | null;
+  organicRank: number | null;
+  organicPage: number | null;
+  sponsoredRank: number | null;
+  sponsoredPage: number | null;
+  competingProducts: number | null;
+  titleDensity: number | null;
+  amazonChoice: boolean;
+  clickShare: number | null;
+  convShare: number | null;
+}
+
+export interface H10Competitor {
+  asin: string;
+  title: string;
+  brand: string;
+  price: number | null;
+  rating: number | null;
+  reviews: number | null;
+  images: number | null;
+  variations: number | null;
+  monthlySales: number | null;
+  bsr: number | null;
+}
+
+export interface H10Data {
+  fetchedAt: string;
+  details?: {
+    lqs: number | null;
+    price: number | null;
+    rating: number | null;
+    reviews: number | null;
+    bsr: number | null;
+    subcategories: { name: string; bsr: number }[];
+    monthlySales: number | null;
+    monthlyRevenue: number | null;
+    images: number | null;
+    variations: number | null;
+    seller: string;
+    parentAsin: string;
+  };
+  keywords?: { total: number | null; rows: H10KeywordRow[] };
+  index?: { reliable: boolean; note: string; rows: { keyword: string; indexed: boolean }[] };
+  competitors?: H10Competitor[];
+  warnings: string[];
 }

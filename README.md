@@ -28,8 +28,21 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 
 Create a branch, make your change, open a pull request. Keep everything in English. Check title and Item Highlights limits (India: 75 characters each) with a script before suggesting them.
 
-## Credits
+## Author
 
-Based on the original Amazon Listing Analyzer by Floki Garvey (MIT).
+**Virendrasinh Jethwa** — author of version 4 (this repository).
 
-**Maintained and extended by Virendrasinh Jethwa:** full English translation, India/FSSAI rules, 75-character title and Item Highlights limits for amazon.in, nutrition table and lab-parameter checks, Rufus/Alexa (AEO) guidance, and a new English report template.
+What's new compared with the original:
+- Full English rewrite and India/FSSAI rules (75-character title and Item Highlights limits for amazon.in)
+- Ready-to-paste optimized listing with keyword coverage before → after and competitor keyword gap
+- Mode A for new products
+- Keyword usage (Scribbles-style), rank by keyword (Cerebro-style) and keyword indexing check
+- Starter negative keywords for Sponsored Products
+- Like-for-like competitor snapshot with price position and "Customers say" topics
+- A+ audit and compliant A+ plan (Basic / Premium)
+- Nutrition table and lab-parameter checks
+- Rufus/Alexa (AEO) score
+- Import duty and landed cost for non-India listings
+- New English report template
+
+Originally based on the Amazon Listing Analyzer by Floki Garvey (MIT license).

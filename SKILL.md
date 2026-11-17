@@ -3,8 +3,8 @@ name: amazon-listing-analyzer
 display_name: Amazon Listing Analyzer
 description: Multi-marketplace Amazon listing diagnosis. Five weighted dimensions (compliance, attribute completeness, selling-point coverage, bullet clarity and order, buyer persona and pain points) plus add-on checks (keywords, sensitive claims, IP risk, cross-carrier consistency, per-image review, nutrition table and lab parameters, A+ content, Rufus/Alexa discoverability). Outputs actionable fixes and an English HTML report. Use when the user asks to analyze, diagnose, audit or optimize an Amazon listing or ASIN.
 icon: 📦
-version: 3.0.0
-author: Floki Garvey (original); Virendrasinh Jethwa (English version and extensions)
+version: 4.0.0
+author: Virendrasinh Jethwa (based on an original by Floki Garvey)
 license: MIT
 disable-model-invocation: true
 ---

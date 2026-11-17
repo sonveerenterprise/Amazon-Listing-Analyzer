@@ -12,5 +12,5 @@ export async function GET(req: Request) {
     const connected = h10Connected();
     h10 = { connected, usage: connected ? await h10Usage().catch(() => null) : null };
   }
-  return Response.json({ ai: aiEnabled(), teamEnabled: teamEnabled(), team, h10 });
+  return Response.json({ ai: aiEnabled(), teamEnabled: teamEnabled(), team, h10, fullReports: team ? aiEnabled() || process.env.REPORT_FAKE_AGENT === "1" : false });
 }

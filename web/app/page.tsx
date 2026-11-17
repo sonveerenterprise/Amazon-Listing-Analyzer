@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MARKETPLACES, getMarketplace } from "@/lib/marketplaces";
 import type { CategoryKey, H10Data } from "@/lib/types";
+import FullReport from "./FullReport";
 import Report, { type Analysis } from "./Report";
 
 const CATEGORIES: [CategoryKey, string][] = [
@@ -20,6 +21,7 @@ interface Status {
   teamEnabled: boolean;
   team: boolean;
   h10: { connected: boolean; usage: { limit: number; used: number; remaining: number } | null } | null;
+  fullReports?: boolean;
 }
 
 interface Form {
@@ -77,7 +79,7 @@ export default function Page() {
     try {
       const s = await (await fetch("/api/status")).json();
       setAiAvailable(Boolean(s.ai));
-      setStatus({ teamEnabled: Boolean(s.teamEnabled), team: Boolean(s.team), h10: s.h10 ?? null });
+      setStatus({ teamEnabled: Boolean(s.teamEnabled), team: Boolean(s.team), h10: s.h10 ?? null, fullReports: Boolean(s.fullReports) });
     } catch {
       setAiAvailable(false);
     }
@@ -273,6 +275,14 @@ export default function Page() {
             )}
             {teamMsg ? <div className="notice info" style={{ margin: "10px 0 0" }} role="status">{teamMsg}</div> : null}
           </div>
+        ) : null}
+
+        {status.team ? (
+          <>
+            <FullReport available={Boolean(status.fullReports)} h10Connected={Boolean(status.h10?.connected)} />
+            <h2 className="sub">Quick check</h2>
+            <p className="lede" style={{ marginBottom: 12 }}>The fast rule check on the listing text. It does not look at images, A+ or search pages.</p>
+          </>
         ) : null}
 
         <form className="card" onSubmit={doFetch}>

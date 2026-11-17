@@ -207,7 +207,7 @@ export default function FullReport({ available, h10Connected }: { available: boo
                 {j.status === "done" && j.summary ? (
                   <details style={{ marginTop: 6 }}>
                     <summary style={{ fontSize: 13 }}>Summary</summary>
-                    <p style={{ whiteSpace: "pre-wrap", margin: "6px 0 0", fontSize: 14 }}>{j.summary}</p>
+                    <p style={{ whiteSpace: "pre-wrap", margin: "6px 0 0", fontSize: 14 }}>{j.summary.replace(/\*\*|`/g, "")}</p>
                   </details>
                 ) : null}
               </li>

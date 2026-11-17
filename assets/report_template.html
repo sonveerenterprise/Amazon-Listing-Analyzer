@@ -44,6 +44,7 @@
   .small { font-size:12px; color:#666; }
   .footer { color:#888; font-size:12px; text-align:center; margin-top:20px; padding:12px; }
   @media (max-width:600px){ body{padding:12px} .img-card{flex-direction:column} table{display:block; overflow-x:auto} }
+  .warning-note { background:#fff8ef; border:1px solid #ffd9a0; border-radius:6px; padding:10px 14px; font-size:13px; margin:8px 0; }
 </style>
 </head>
 <body>
@@ -55,6 +56,26 @@
   <div class="meta">ASIN: {ASIN} — {PRODUCT_NAME}</div>
   <div><span class="site-badge">Marketplace: {SITE}</span><span class="site-badge">Language: {LANGUAGE}</span><span class="site-badge">Currency: {CURRENCY}</span></div>
   <div class="source">Data source: {DATA_SOURCE} | Generated: {DATE}</div>
+</div>
+
+<div class="section">
+  <h2>✅ Optimized listing — ready to paste</h2>
+  <h3>Title <span class="small">({TITLE_LEN} / {TITLE_LIMIT})</span></h3>
+  <div class="code-block">{NEW_TITLE}</div>
+  <h3>Item Highlights <span class="small">({HL_LEN} / {HL_LIMIT})</span></h3>
+  <div class="code-block">{NEW_HIGHLIGHTS}</div>
+  <h3>Bullet points</h3>
+  {NEW_BULLETS}
+  <h3>Product description <span class="small">({DESC_LEN} / 2,000)</span></h3>
+  <div class="code-block">{NEW_DESCRIPTION}</div>
+  <h3>Backend search terms</h3>
+  <div class="code-block">{NEW_SEARCH_TERMS}</div>
+  <h3>Keyword coverage <span class="small">({COV_BEFORE} → {COV_AFTER})</span></h3>
+  <table><tr><th>Keyword</th><th>Before</th><th>After</th><th>Where added</th></tr>{COVERAGE_ROWS}</table>
+  <h3>Competitor keyword gap</h3>
+  <ul>{COMP_KEYWORD_GAP}</ul>
+  <h3>Before → after</h3>
+  <table><tr><th>Part</th><th>Before</th><th>After</th></tr>{BEFORE_AFTER_ROWS}</table>
 </div>
 
 <div class="section">
@@ -125,6 +146,21 @@
 </div>
 
 <div class="section">
+  <h2>🖍️ Keyword usage (Scribbles) <span class="small">(current live listing · uses per word and phrase)</span></h2>
+  <div class="callout">Chip colour = best place used (green title · purple highlights · blue bullets · orange description · teal backend · red not used); ×n = total uses.</div>
+  <h3>Words ({W_USED} / {W_TOTAL} used · {W_PCT}%)</h3>
+  <div>{WORD_CHIPS}</div>
+  <table><tr><th>Word</th><th class="center">Title</th><th class="center">Highlights</th><th class="center">Bullets</th><th class="center">Description</th><th class="center">Backend</th><th class="center">Total</th></tr>{WORD_ROWS}</table>
+  <h3>Phrases ({P_USED} / {P_TOTAL} used · {P_PCT}%)</h3>
+  <div>{PHRASE_CHIPS}</div>
+  <table><tr><th>Phrase</th><th class="center">Title</th><th class="center">Highlights</th><th class="center">Bullets</th><th class="center">Description</th><th class="center">Backend</th><th class="center">Total</th></tr>{PHRASE_ROWS}</table>
+  <h3>Not used yet</h3>
+  <p style="font-size:14px"><b>Words:</b> {UNUSED_WORDS}</p>
+  <p style="font-size:14px"><b>Phrases:</b> {UNUSED_PHRASES}</p>
+  <div class="warning-note"><b>Remark:</b> Backend search terms can only be measured after Seller Central login/authorization, or if the seller pastes them. Until then, the Backend column shows "–".</div>
+</div>
+
+<div class="section">
   <h2>📊 Rank by keyword</h2>
   <table>
     <tr><th>Metric</th><th>Value</th></tr>
@@ -148,7 +184,23 @@
 </div>
 
 <div class="section">
-  <h2>🏆 Competitor snapshot <span class="small">(top 5 organic for "{MAIN_KEYWORD}")</span></h2>
+  <h2>🚫 Starter negative keywords <span class="small">(for Sponsored Products · pre-emptive, from real search suggestions)</span></h2>
+  <div class="callout"><strong>Summary:</strong> {NEG_SUMMARY}</div>
+  <table><tr><th>Group</th><th class="center">Terms</th><th>Match type</th></tr>{NEG_SUMMARY_ROWS}</table>
+  <h3>1. Negative phrase — wrong form or pack</h3>
+  <div class="code-block">{NEG_FORM}</div>
+  <h3>2. Negative phrase — wrong formula</h3>
+  <div class="code-block">{NEG_FORMULA}</div>
+  <h3>3. Negative phrase — wrong product</h3>
+  <div class="code-block">{NEG_PRODUCT}</div>
+  <h3>4. Negative exact — unsupported claim</h3>
+  <div class="code-block">{NEG_CLAIM}</div>
+  <p class="small">Amazon Sponsored Products supports only negative exact and negative phrase. Real waste negatives come from your Search Term Report (10+ clicks, 0 orders).</p>
+</div>
+
+<div class="section">
+  <h2>🏆 Competitor snapshot <span class="small">(like-for-like: {COMPARISON_BASIS})</span></h2>
+  <div class="callout"><strong>Price position:</strong> {PRICE_POSITION} <span class="small">(this ASIN vs min / median / max unit price of {N_LIKE} like-for-like listings)</span></div>
   <table>
     <tr><th>Product</th><th>Price</th><th>Unit price</th><th>Rating</th><th>Ratings</th><th>Title length</th><th>Images</th><th>Video</th><th>A+ modules</th><th>Brand Story</th></tr>
     {COMP_ROWS}
@@ -187,13 +239,26 @@
 <div class="section">
   <h2>🅰️ A+ content</h2>
   <div class="callout"><strong>Summary:</strong> {AP_SUMMARY}</div>
+  <h3>Current A+ audit</h3>
   <table><tr><th>#</th><th>Module</th><th>Content</th><th>Issue</th></tr>{AP_ROWS}</table>
   <ul>{AP_ACTIONS}</ul>
+  <h3>Compliant A+ improvement plan <span class="small">({AP_TIER} — Basic A+: 5 modules / 5 images · Premium A+: 7 modules / 7 images)</span></h3>
+  <table><tr><th>#</th><th>Module type</th><th>Headline</th><th>Copy</th><th>Image brief</th><th>Alt text</th></tr>{AP_PLAN_ROWS}</table>
+  <p class="small">Plan excludes what Amazon rejects in A+: reviews or testimonials, other-brand comparisons, prices or urgency, warranty or returns text, contact details or QR codes, medical claims.</p>
 </div>
 
 <div class="section">
   <h2>🤖 Rufus / Alexa discoverability (AEO) — {AEO_SCORE}/100</h2>
   <table><tr><th>Check</th><th>Score</th><th>How to improve</th></tr>{AEO_ROWS}</table>
+</div>
+
+<!-- Only for listings outside India -->
+<div class="section">
+  <h2>🌍 Import duty and landed cost <span class="small">({ORIGIN} → {DESTINATION} · HS {HS_CODE}, to be confirmed by a broker)</span></h2>
+  <table><tr><th>Item</th><th>Rate / basis</th><th>Amount</th><th>Source</th></tr>{LANDED_ROWS}</table>
+  <div class="callout"><strong>Landed cost per unit:</strong> {LANDED_PER_UNIT} <span class="small">(assumed inputs marked; replace with your own)</span></div>
+  <ul>{IMPORT_COMPLIANCE_NOTES}</ul>
+  <p class="small">Rates looked up on {RATE_DATE} from official sources. Tariffs change often. Confirm with a licensed customs broker before shipping.</p>
 </div>
 
 <div class="section">

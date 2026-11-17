@@ -22,14 +22,14 @@ Example: "Premium Stainless Steel Insulated Water Bottle – BPA-Free" (62) + hi
 ## 3. Bullets
 
 - Up to 5; about 100–250 characters each (some tools suggest ≥150 for quality scores).
-- Start with a capital; no emoji; no all-caps except short headers/acronyms; no repetition.
+- Start with a capital; `Header: description`; no full stop at the end; no emoji; no ALL CAPS (headers included); no repetition.
 - Banned: price, promotion, shipping, seller information.
 - One feature + benefit per bullet.
 - Common order (industry practice, **not an Amazon rule; don't deduct for it**): hero benefit → use case → differentiator → specs/compatibility → trust facts.
 
 ## 4. Backend search terms
 
-- 249 **bytes**; going over by one byte can void the whole field.
+- **200 bytes** on amazon.in (Attributes guide, error 97779; the Search page says "under 250", use 200); going over can void the whole field.
 - Don't repeat words in the title/highlights/bullets; no commas; no brand names (yours or others'); no ASINs.
 - Use synonyms, alternative and phonetic spellings, local-language terms (e.g. Hindi transliterations on amazon.in), long-tail terms.
 

@@ -1,0 +1,42 @@
+BULLET POINTS - RULES (Amazon.in)
+Source: Seller Central Help > Product bullet point requirements (GX5L8BF8GLMML6CX). Condensed notes, read 17 Nov 2026.
+
+WRITING GUIDELINES
+- At least 3 bullets. Character limit depends on product type.
+- Start with a capital letter.
+- Write as a sentence fragment; NO full stop at the end. Use semicolons to separate phrases inside one bullet.
+- Numbers one to nine written as words (except names, model numbers, measurements).
+- Space between number and unit: "60 ml", not "60ml".
+- Structure: short header + colon + description ("Cotton fabric: Made from 100% cotton").
+- Focus on features, benefits and customer needs. No brand marketing stories.
+- Keep data consistent across variants. Don't duplicate what's already in title, description or product overview.
+- Avoid subjective, performance or comparison claims unless verifiable on the packaging. No unproven awards or survey results.
+- Don't point to other products or compare with competitor brands.
+
+PROHIBITED (bullet may be removed or rewritten by Amazon)
+- Special characters: ™ ® € … † ‡ ¢ £ ¥ © ± ~ â
+- Emojis
+- Placeholder text: NA, N/A, TBD, "to be decided", "copy pending" etc.
+- ASINs
+- Claims: eco-friendly / environmentally friendly, anti-microbial, anti-bacterial, made from/contains bamboo or soy (see General listing restrictions)
+- Guarantees: "full refund", "send it back if not satisfied", unconditional guarantees
+- External info: company info, website links, contact details
+- Same information repeated across bullets (each bullet must be unique)
+- ALL CAPS ("MACHINE WASHABLE")
+- Abbreviations: qty, pkg, w/, approx.
+- Info that has its own field (fabric, care instructions, country of origin)
+
+HOW TO EDIT
+- Single product: Manage Products > Edit > Product Details > Bullet Point > Save.
+- Bulk: category inventory file template (Add products > Spreadsheet).
+
+CHECKLIST FOR THE SKILL
+[ ] 3+ bullets (5 used in practice)
+[ ] Each starts with "Header: description"
+[ ] No end punctuation
+[ ] No ALL CAPS headers
+[ ] No repeated point across bullets
+[ ] No banned characters, emojis, ASINs, links, contact info
+[ ] No guarantees, no competitor comparisons, no unverifiable claims
+[ ] "60 ml" spacing; numbers 1-9 as words where not a measurement
+[ ] Nothing that belongs in a dedicated field (origin, care, fabric)

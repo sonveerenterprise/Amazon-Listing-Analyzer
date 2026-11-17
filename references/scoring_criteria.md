@@ -21,7 +21,7 @@ Grades: 90–100 Excellent · 75–89 Good · 65–74 Fair · below 65 Poor.
 | Item (JSON key) | Max | Rule |
 |---|---|---|
 | Title length (`title_length`) | 25 | Within limit (US 75; India 75; others per Seller Central) = 25; over by 1–25 = 10; far over = 0 (**P0**) |
-| Title content (`title_content`) | 20 | No banned characters, promo/subjective words, false claims, competitor brands = 20; −5 to −8 per issue (all-caps brand −2, filler like "original" −3); several = 0 (**P0**) |
+| Title content (`title_content`) | 20 | No banned characters, promo/subjective words, false claims, competitor brands = 20; −5 to −8 per issue (ALL CAPS words or brand −3, a word used 3+ times −3, filler like "original" −3); several = 0 (**P0**) |
 | Main image (`main_image`) | 20 | White background + no added text + ≥85% fill + ≥1000 px = 20; −5 per issue; added text/watermark = 0 (**P0**) |
 | Bullet content (`bullet_content`) | 15 | No price, promotion, shipping, contact, review quotes = 15; −5 each (**P0**) |
 | Variations (`variation`) | 10 | Same category + consistent naming = 10; inconsistent naming −2 to −5; mixed categories = 0 (**P0**) |

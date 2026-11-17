@@ -1,0 +1,47 @@
+PRODUCT TITLE - RULES (Amazon.in)
+Source: Seller Central Help > Product title requirements and guidelines (GYTR6SYGFA5E3EQC). Condensed notes, read 17 Nov 2026.
+
+HARD REQUIREMENTS (a listing can be blocked, auto-corrected or hidden from search)
+- Max 75 characters including spaces. Applies to all product types except media.
+- No promotional phrases (e.g. "free shipping", "100% quality guaranteed").
+- Banned characters: ! $ ? _ { } ^ ¬ ¦
+- ~ # < > * allowed only in a real context (model number "Style #4301", measurement "<10 lb"). Decorative use of symbols is not allowed.
+- Must contain at least the minimum info that identifies the product (brand + product type).
+- No restricted phrases (example given: "FSA/HSA eligible").
+- No word more than twice. Prepositions, articles and conjunctions are exempt. The brand name also counts toward the two-use limit.
+
+BEST PRACTICES
+- Order: Brand > flavour/style > product type > key attribute > colour > size or pack count > model number. Most important info first.
+- Keep it short and scannable; mobile cuts long titles.
+- No repeated words or information.
+- No decorative symbols (stars etc.). Allowed punctuation: - / , & .  No non-language characters like Æ Š Œ.
+- Variations: size/colour go in the child title, not the parent title.
+- Use numerals ("2-Pack"), not words ("Two-Pack").
+- No subjective words ("Hot item", "Best seller").
+- No ALL CAPS and no all lowercase. Capitalise each word except prepositions, conjunctions and articles.
+- Measurements may be abbreviated (cm, oz, in, kg).
+- Model numbers recommended in some categories (check category style guide).
+
+ITEM HIGHLIGHTS (extra field under the title)
+- Unlocked once the title is within 75 characters.
+- About 125 extra characters for details like material or use case.
+- Write as comma-separated phrases, not sentences.
+- Shown under the title in search results and on the detail page.
+- Put the most important variating attributes in the title; overflow goes to item highlights.
+
+PROCESSING AND TROUBLESHOOTING
+- Changes are accepted immediately but take 24-48 hours to show. No need to resubmit or open a case in that window. After 48 hours: resubmit or contact support.
+- No brand: enter "generic" in Brand name; never put a brand in the title.
+- Brand names with banned characters go in the Brand name field only (exempt there).
+- Parent title is what shows on the detail page in Clothing, Accessories & Luggage, Sporting Goods and Beauty. Edit the parent title in those categories.
+- Suppressed/blocked title: Manage All Inventory > "Search suppressed and inactive listings", fix the violation, resubmit; Amazon re-checks automatically.
+
+CHECKLIST FOR THE SKILL
+[ ] Length <= 75
+[ ] No banned characters / decorative symbols
+[ ] No promo or subjective words
+[ ] No word used 3+ times (incl. brand)
+[ ] Starts with brand, then product type and key attribute
+[ ] Numerals, not number words
+[ ] Title case, not ALL CAPS
+[ ] Item highlights filled, comma-separated phrases, <= ~125 chars

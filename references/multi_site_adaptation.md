@@ -14,7 +14,7 @@ Load the target marketplace's parameters before fetching a listing, so the page 
 | Canada | amazon.ca | en_CA | CAD | C$ | 200 (reference) | 6 |
 | Italy | amazon.it | it_IT | EUR | € | 200 (reference) | 8 |
 | Spain | amazon.es | es_ES | EUR | € | 200 (reference) | 9 |
-| **India** | **amazon.in** | **en_IN** | **INR** | **₹** | **75 (enforced); Item Highlights 75** | 11 |
+| **India** | **amazon.in** | **en_IN** | **INR** | **₹** | **75 (enforced); Item Highlights ~125 (Amazon Help; keep ≤75 if the field shows 75)** | 11 |
 | Mexico | amazon.com.mx | es_MX | MXN | MX$ | 200 (reference) | 12 |
 | Australia | amazon.com.au | en_AU | AUD | A$ | 200 (reference) | 13 |
 | Brazil | amazon.com.br | pt_BR | BRL | R$ | 200 (reference) | 15 |
@@ -27,7 +27,7 @@ Load the target marketplace's parameters before fetching a listing, so the page 
 | Saudi Arabia | amazon.sa | en_AE / ar_SA | SAR | SAR | 200 (reference) | 25 |
 | Egypt | amazon.eg | ar_EG | EGP | EGP | 200 (reference) | 26 |
 
-\* US: 75-character title rule enforced. India: title and Item Highlights are both limited to 75 characters (confirmed by the seller in Seller Central, Nov 2026). Elsewhere, follow what Seller Central shows; 200 is a reference only. Always count characters with a script before giving a title or highlights.
+\* US: 75-character title rule enforced. India: title 75 characters (Amazon rule). Item Highlights: Amazon Help says about 125 characters; the seller saw a 75-character field on food listings, so keep ≤75 unless the field allows more. Elsewhere, follow what Seller Central shows; 200 is a reference only. Always count characters with a script before giving a title or highlights.
 
 Keepa price history: `https://keepa.com/#!product/{prefix}-{ASIN}`.
 
@@ -63,7 +63,7 @@ Prefer the built-in browser over plain HTTP fetches: Item Highlights (`.dp-title
 
 | Rule | US | India | EU | UK | Japan |
 |---|---|---|---|---|---|
-| Title limit | 75 enforced | 75 enforced (+ highlights 75) | Check Seller Central | Check Seller Central | Check Seller Central |
+| Title limit | 75 enforced | 75 enforced (+ highlights ~125, keep ≤75) | Check Seller Central | Check Seller Central | Check Seller Central |
 | Food regulator | FDA | FSSAI | EFSA / national | FSA | MHLW / CAA |
 | Organic marks | USDA Organic | NPOP / PGS-India + Jaivik Bharat logo | EU organic leaf | UK organic | JAS |
 | Electrical certification | UL / ETL / FCC | BIS | CE | UKCA / CE | PSE |

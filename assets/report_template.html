@@ -248,8 +248,11 @@
 </div>
 
 <div class="section">
-  <h2>🤖 Rufus / Alexa discoverability (AEO) — {AEO_SCORE}/100</h2>
+  <h2>🤖 Rufus / Alexa for Shopping (AEO) — {AEO_SCORE}/100</h2>
   <table><tr><th>Check</th><th>Score</th><th>How to improve</th></tr>{AEO_ROWS}</table>
+  <h3>Intent map</h3>
+  <table><tr><th>Group</th><th>Buyer question</th><th>Answered where</th><th>Fix</th></tr>{INTENT_ROWS}</table>
+  <div class="callout"><b>Rufus ads:</b> no separate Rufus campaign or bid. Eligible Sponsored Products/Brands campaigns serve in Rufus automatically, and Amazon chooses the prompts from your detail page. Review each ASIN's active prompts in the ad console and opt out of misleading ones. Close answer gaps before raising bids.</div>
 </div>
 
 <!-- Only for listings outside India -->
@@ -259,6 +262,12 @@
   <div class="callout"><strong>Landed cost per unit:</strong> {LANDED_PER_UNIT} <span class="small">(assumed inputs marked; replace with your own)</span></div>
   <ul>{IMPORT_COMPLIANCE_NOTES}</ul>
   <p class="small">Rates looked up on {RATE_DATE} from official sources. Tariffs change often. Confirm with a licensed customs broker before shipping.</p>
+</div>
+
+<div class="section">
+  <h2>🚀 Growth readiness <span class="small">(Amazon programmes)</span></h2>
+  <table><tr><th>Programme</th><th class="center">Eligible?</th><th>Why</th><th>Next step</th></tr>{GROWTH_ROWS}</table>
+  <p class="small">Based on Amazon.in Seller Central Help (Increase sales). Fulfilment type, Brand Registry and account metrics come from the seller; unknowns are marked "not obtained".</p>
 </div>
 
 <div class="section">

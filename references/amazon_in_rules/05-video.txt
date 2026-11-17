@@ -1,0 +1,40 @@
+SHOPPABLE VIDEO - RULES (Amazon.in)
+Source: Seller Central Help > Shoppable video guide (GUZBYWTTVULY6C9Y). Condensed notes, read 17 Nov 2026.
+
+WHY
+- Amazon's own data: ASINs that added a video saw about 24% more sales on average than ASINs without one (Jan-Jun 2026).
+- Builds confidence, shows size/use, reduces returns.
+
+VIDEO TYPES
+- Product overview (features, real-life use, size)
+- Unboxing (what's in the box, scale)
+- How-to / product operation (multiple use cases)
+- Setup, Troubleshooting, Brand story, Other
+
+TECH SPECS
+- MOV or MP4, max 5 GB, up to 1080p.
+- 16:9 horizontal or 9:16 vertical.
+- Duration 1-12 minutes.
+- Thumbnail JPEG/PNG/GIF/BMP under 5 MB.
+- Each video linked to at least one ASIN. No cross-marketplace sharing (except US-Canada).
+- Upload eligibility: seller account active more than 3 months.
+
+ALLOWED
+- Features and benefits, product in use, size/scale, setup steps, answering common customer questions, good lighting and clear audio, engaging thumbnail.
+
+NOT ALLOWED
+- External website links, promotional calls to action, promotional content
+- Unlicensed music/artwork, visible third-party branding
+- Misleading claims or wrong information
+- Blurry/low-quality video or thumbnails
+- AI-generated photorealistic people: tag with "contains-synthetic-performer" metadata.
+
+UPLOAD
+- Upload and Manage Videos > Upload video(s): title, ASINs, language, thumbnail > Submit.
+- Or through Image Manager.
+
+CHECKLIST FOR THE SKILL
+[ ] Listing has at least 1 video
+[ ] Shows product in use and answers top buyer questions
+[ ] 1080p, 16:9 or 9:16, 1-12 min
+[ ] No links, calls to action, promo, unlicensed music, false claims

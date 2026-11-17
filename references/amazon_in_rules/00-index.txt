@@ -1,0 +1,25 @@
+AMAZON.IN LISTING RULES - KNOWLEDGE BASE FOR A LISTING-CHECK SKILL
+Built from Seller Central Help pages, read 17 Nov 2026 (amazon.in).
+Condensed notes in plain words, with checklists. Re-check the source pages every few months; Amazon changes rules.
+
+FILES
+01-title.txt                 Title + item highlights rules, banned characters, 75-char limit
+02-bullets.txt               Bullet format, prohibited content
+03-attributes.txt            Required/recommended attributes, template rules, error codes
+04-images.txt                Image slots/codes, MAIN rules, specs, what gets images rejected
+05-video.txt                 Shoppable video specs and rules
+06-search-optimisation.txt   Browse nodes, backend search terms, why an ASIN is unsearchable
+07-a-plus-content.txt        Basic/Premium A+, Brand Story, do/don't
+08-increase-sales.txt        Vine, Sampling, coupons, discounts, promotions, Alexa for Shopping, experiments, Bazaar...
+
+CONFLICTS FOUND BETWEEN AMAZON'S OWN PAGES
+- Backend search terms limit: Attributes guide = 200 bytes (error 97779); Search optimisation page = "less than 250 bytes". Use 200.
+- Numbers: bullet guide says write one to nine as words (except measurements); title guide says use numerals in titles. Both apply to their own field.
+
+
+SCORING IDEA FOR THE SKILL
+1. Compliance (blocks/suppression risk): title rules, banned characters, claims in images/bullets, MAIN image rules
+2. Completeness: required + recommended attributes, 7+ images, video, A+ (Premium), Brand Story
+3. Discoverability: title front-loads brand + main keyword, item highlights, backend terms, browse node, indexing check
+4. Conversion: answers to top buyer questions (Alexa for Shopping suggestions), price vs. competitors, delivery promise, reviews/rating
+5. Growth readiness: coupon, sampling/Vine, ads, Bazaar eligibility, experiments when traffic allows

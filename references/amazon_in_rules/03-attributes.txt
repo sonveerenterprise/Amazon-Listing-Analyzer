@@ -1,0 +1,39 @@
+ATTRIBUTES - RULES (Amazon.in)
+Source: Seller Central Help > Attributes guide (GBWHYLJ7NNQMXBAQ). Condensed notes, read 17 Nov 2026.
+
+WHY THEY MATTER
+- Attributes are the facts on the detail page (size, colour, wattage, diet type...). They vary by product type.
+- Complete, accurate attributes: better search visibility and search filters, easier comparison, and Rufus / Alexa for Shopping gives more accurate answers about the product.
+
+THREE VIEWS IN THE EDIT PAGE
+- Required: listing cannot exist without them (title, main image, description, price...).
+- Recommended: important for the category; fill all of them.
+- All: everything available for the product type; fill as many as possible.
+
+EDITING
+- Single: Manage Products > Edit > use the Required / Recommended / All filter > Save and finish.
+- Bulk: category inventory template from Add products > Spreadsheet.
+- Use only templates downloaded in the last 90 days (version in cell B1).
+- Drop-down attributes: pick only listed values; never paste your own.
+- Some attributes are number + unit (unit count "12 count", "400 Grams").
+
+KEY LIMIT
+- Generic keywords (backend search terms): max 200 BYTES on Amazon.in (error 97779 if over).
+
+ERROR CODES
+- 90057 invalid value (not in valid-value list) -> pick from the drop-down.
+- 90220 missing required attribute -> fill it; use a fresh template.
+- 90225 value too long -> shorten.
+- 90248 field sent when its preconditions forbid it -> remove that field.
+- 97779 generic keywords over 200 bytes -> shorten.
+- 99001 missing required value (red cells in template) -> fill and resubmit.
+- 99010 conditional group incomplete/conflicting -> check Data definitions and Valid values tabs.
+- 8541 (seen in practice, not on this page): listing data conflicts with the Amazon catalogue (e.g. a big title rewrite). Make smaller changes or use Brand Registry.
+
+CHECKLIST FOR THE SKILL
+[ ] All Required filled
+[ ] All Recommended filled (count empty ones)
+[ ] Values match the physical label (net quantity, ingredients, manufacturer, packer with full address)
+[ ] Unit count = number + correct unit
+[ ] Backend keywords <= 200 bytes, no repeats of title words, no competitor brands, no disease terms
+[ ] No claim-type values in benefit/use fields that the label cannot support

@@ -93,3 +93,27 @@ Rufus doesn't recommend products it isn't confident about. Complete, consistent 
 15. Not a spec sheet; not adjective-led.
 16. Covers scenario, problem, persona and comparison queries.
 17. Consistent data across surfaces (see `cdq_data_quality.md`).
+
+## 8. Update — Rufus in search and Rufus ads (Nov 2026)
+Source: Trellis blog "Optimizing for Rufus and Sponsored Products" (updated 6 Oct 2026). Items marked (Amazon) are attributed by the article to Amazon; the rest are the article's view.
+
+Timeline:
+- Nov 2025: Sponsored Products and Sponsored Brands prompts in Rufus launched as a free open beta (Amazon, unBoxed).
+- 25 Mar 2026: Rufus prompts became billable on normal CPC (Amazon).
+- May 2026: Rufus moved from a side panel into the main search bar.
+- 13 May 2026: Rufus and Alexa+ merged as "Alexa for Shopping" (Amazon).
+
+Listing guidance:
+- Fill every structured attribute accurately; Rufus treats them as more reliable than bullet prose (article's view).
+- Each bullet answers one buyer question in full; no adjective lists or keyword stacks.
+- Use A+ for comparisons and edge cases, not repeated hero images.
+- Check the suggested questions Rufus shows on the product page against the listing.
+- Keep Q&A accurate and reply to reviews; never fake reviews.
+- Replace the keyword list with an intent map: situations, constraints, comparisons, jobs.
+- Re-test by asking Rufus the same questions after each change.
+
+Ads:
+- No Rufus-only campaign, budget or placement bid; eligible SP/SB campaigns serve there automatically.
+- Amazon selects which prompts an ASIN is eligible for from its detail page; the CPC auction runs only among eligible ASINs.
+- Review active prompts per ASIN and opt out of misleading ones.
+- No custom prompts, per-prompt bids or per-prompt reports. Close answer gaps before raising bids.

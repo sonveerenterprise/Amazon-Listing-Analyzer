@@ -1,0 +1,55 @@
+A+ CONTENT - RULES (Amazon.in)
+Source: Seller Central Help > A+ Content guide (GLG4RQK2Y2RJADU4). Condensed notes, read 17 Nov 2026.
+
+WHAT
+- Rich content in the product description section, for brand owners (Brand Registry) and authorised resellers.
+- Free. Premium A+ has no extra eligibility criteria.
+- Benefits: better conversion and discoverability, fewer questions and negative reviews, stronger brand.
+
+THREE TYPES
+- Basic A+: up to 5 modules, 14 module types, images 970 x 300, comparison chart, no video/hotspots.
+- Premium A+: up to 7 modules, 19 module types, images 1464 x 600, video, hotspots, carousels, Q&A modules, enhanced comparison charts.
+- Brand Story ("From the brand"): 1 module, up to 19 carousel cards, links to products and Brand Store. Works alongside Basic or Premium.
+
+TECH
+- .jpg .bmp .png, RGB only (no CMYK), under 2 MB each, 72 dpi+.
+- No GIFs, HTML tags, watermarks, QR codes, hyperlinks/redirects.
+- Language must match the content language.
+- Brand name must exactly match Brand Registry (case-sensitive). ASINs must be in your brand.
+
+PROCESS
+- A+ Content Manager > Start creating > choose modules > add text + images (with ALT TEXT for every image) > preview desktop + mobile > apply to ASINs > submit.
+- Review up to 7 business days; live within 24 h of approval. Max 20 pending submissions.
+- Bulk apply: up to 10,000 ASINs per upload.
+
+DO
+- Unique content (don't repeat the image gallery)
+- Features and benefits, not promo language
+- Clear alt text on all images
+- Max 3 sentences per paragraph
+- Consistent terms, proper header capitals, serial commas, sparing bold/italic
+- Spell out numbers under 10
+- Readable text, clear hierarchy, mobile-friendly
+- Answer common customer questions
+- Comparison charts for SAME-brand products
+
+DON'T
+- Time-sensitive references, promo language or pricing
+- Competitor comparisons
+- External links or contact info
+- Warranty/guarantee info, shipping details
+- QR codes, personal info, watermarks, animated images
+- Blurry images or tiny text; images duplicated from the gallery
+
+IF IT DOESN'T SHOW
+- Check status Approved > ASIN under Applied ASINs > language > wait 24 h > contact support.
+- If rejected: read rejection reasons, fix, resubmit.
+
+CHECKLIST FOR THE SKILL
+[ ] A+ present (Premium if possible: 7 modules)
+[ ] Brand Story present
+[ ] Alt text on every image
+[ ] No duplicate modules / gallery repeats
+[ ] Comparison chart linking own ASINs (e.g. pack sizes or formats)
+[ ] FAQ / Q&A module answering top buyer questions
+[ ] No pricing, promo, competitor names, guarantees, links

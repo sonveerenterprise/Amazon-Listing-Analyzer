@@ -1,0 +1,107 @@
+INCREASE SALES - PROGRAMMES AND RULES (Amazon.in)
+Source: Seller Central Help > Increase sales section (35 links). Condensed notes, read 17 Nov 2026.
+Some links are only menu pages with no text of their own (Amazon Deals, Seller storefront, Amazon Prime, Seller Fulfilled Prime, Start selling, Additional resources).
+
+==================================================
+A. USEFUL FOR LISTING / LAUNCH GROWTH
+==================================================
+
+AMAZON VINE (G92T8UV339NZ98TN)
+- Free units to trusted "Vine Voice" reviewers; builds reviews for new/slow ASINs.
+- Requirements: Brand Registry (owner, representative or authorised reseller) AND FBA.
+- Item must have fewer than 30 reviews, a buyable FBA "New" offer with stock in a fulfilment centre, never enrolled before, title + image + description, eligible browse node.
+- Fee charged once per parent ASIN after the first Vine review is published; no fee if no review within 90 days.
+- Not eligible: over INR 50,000, digital, precious jewellery, art, bullion, adult, heavy/bulky, multi-box.
+- NOTE: an FBM-only seller cannot use Vine.
+
+PRODUCT SAMPLING (GM2N7ZJQ59R7ESQP)
+- Targeted buyers get your product for INR 1 through a claim code; Amazon notifies them via pages, emails, banners.
+- Goal: early reviews, feedback, repeat buys, brand awareness. Claim codes hidden from non-target buyers.
+- Works with ANY fulfilment: seller-fulfilled, Seller Fulfilled Prime, FBA, Seller Flex. Request via the Product Sampling programme form.
+- The FBM alternative to Vine.
+
+COUPONS (G3QLEV6W2QK84C57)
+- Discount on one or a set of products; shown on the coupons page, search results, detail page, offers display and cart.
+- Sub-topics: eligibility, budgets, targeting, errors, stacking.
+
+PRICE DISCOUNTS (G7F8CQ4EJ5YA4272)
+- Time-bound discount, 1-30 days, on a set number of units; can target Prime, all customers or business customers.
+- Products with an MRP show a strike-through price.
+- Eligibility: Professional account; product rating at least 3 stars; New condition; discount at least 5% below the 30-day lowest price AND at least 2% below current price; MRP needed to show savings.
+- Seller-fulfilled offers also need: late shipment rate <= 4%, order defect rate <= 1%, pre-fulfilment cancellation <= 0.5%, disbursement reserve >= 7 days after delivery, FREE shipping.
+- NOTE: zero-review / unrated products cannot use Price Discounts.
+
+AMAZON PROMOTIONS (G60951)
+- Manage Promotions: percentage/amount discounts, buy-X-get-Y free products, custom claim codes.
+- A published promotion is binding: errors in setup create customer complaints or unplanned cost. Test rules carefully.
+- Referral fee is charged on the price AFTER the promotion (free item: fee only on the paid item).
+
+ALEXA FOR SHOPPING (GYYH9SLHSTHKT3CZ)
+- Rufus + Alexa merged into one AI assistant; live for customers in India on app and website; no Prime needed.
+- Customers use it for recommendations, comparisons, product updates, PRICE HISTORY (30/90/365 days of lowest featured-offer price), price alerts and Auto Buy, product details and "what customers say", orders.
+- Product questions ("dimensions?", "machine washable?") are answered FROM THE DETAIL PAGE. Accurate attributes, bullets and description = accurate answers.
+- Wrong answer? Fix the detail page first, then raise a help ticket with ASIN, screenshot of question + answer, what's wrong, expected answer, and proof (listing screenshot, manual, manufacturer site).
+- NOTE: price history is visible to shoppers, so fake "discounts" off a raised price are exposed.
+
+MANAGE YOUR EXPERIMENTS (GVP453K5XRBJS7Y9)
+- A/B test title, images, bullets, description, A+ and Brand Story. Shoppers split 50/50 for the whole test. Experiments don't affect search rank.
+- Requires Brand Registry brand owner AND a high-traffic ASIN (can mean several dozen orders a week). Low-traffic ASINs may not appear; drive traffic with ads first.
+- One experiment per ASIN at a time. A+/Brand Story tests need published A+/Brand Story.
+
+PRODUCT OPPORTUNITY EXPLORER (GNJ4YRTXWLMBY38U)
+- Professional sellers only. Shows demand by "niche" (a group of related search terms and top products).
+- Search niches by keyword, ASIN or category; pick the store (defaults to US first time).
+- Use for: real search terms around a product, demand vs. competition, new product ideas.
+
+SALE EVENTS (GTK7P2B845X27E4T, G5GW4WV64L2Z4KXK)
+- Tips: stock up, spread stock across fulfilment centres (FBA), price competitively for the featured offer, use Lightning Deals and coupons (Amazon claims up to 3x sales), run Sponsored ads.
+- Sale Event Planner (app + Seller Central): advance notice of events, recommended actions (deals, stock, Buy More Save More).
+
+AMAZON ADS (G200663330)
+- Sponsored Products / Brands / Display and Brand Stores are supported by the Advertiser Support team on the Amazon Ads site, not Seller Support.
+
+WARRANTY DETAILS (G3GTEUDUFNFQBL69)
+- Add warranty period, terms, how to claim, serviceable pin codes; shown on the detail page. Mostly for durable goods.
+
+GIFT OPTIONS (G571)
+- Seller-fulfilled sellers can enable gift wrap and gift messages per product (FBA handles this automatically).
+
+AMAZON BAZAAR (GDJZZGNRXFYB9AG4, G6N49KFXCRFTLR5G, GCQFQQW5HW552SYN)
+- Value store inside Amazon.in. Products at or below INR 500 (category-specific thresholds) with ZERO delivery charge, fulfilled by Easy Ship or self-ship, appear automatically. No separate listing.
+- Check the thresholds table for your exact subcategory before relying on it.
+
+FBA SUBSCRIBE & SAVE (G201620110)
+- Recurring deliveries with a seller-funded base discount, extra tier for 3+ subscriptions. FBA only.
+
+SAMRIDDHI (GJJ4GZUE4N6QBVUQ)
+- Seller dashboard: performance tracker, monthly score card, speed, conversion levers, fee revision, selection recommendations; quick access to account manager.
+
+BUSINESS PLANNER (GEANBS97BNTWSBJB, GRG94ATAYVWUZ5L4)
+- Early-release tool: pick recommended goals from the homepage card and track them.
+
+LIVE SHOPS (GPRDMH8SC6GZXYU9)
+- Customers can video-call the seller during set slots for pre-purchase questions; configured in the Seller app.
+
+AMAZON SMART COMMERCE SHOP BUILDER (GQTPHKTADT7G33HU)
+- No-code brand website (formerly SmartBiz) that can import the Amazon.in catalogue; payments, shipping, marketing built in.
+
+A+ CONTENT (G202102930)
+- Same programme as file 07. Needs Professional account + Brand Representative or Reseller role.
+
+==================================================
+B. NOT RELEVANT FOR LOW-PRICE FOOD PRODUCTS
+==================================================
+- No Cost EMI, EMI with down payment, Exchange Offer, Buyback for self-ship, Cashback T&C: financing and trade-in programmes for higher-value goods.
+- Digital Starter Kit: discounts on third-party services (accounting, GST, AWS) for new sellers.
+
+==================================================
+CHECKLIST FOR THE SKILL (growth readiness)
+==================================================
+[ ] Fulfilment: FBA? (needed for Vine, Subscribe & Save) If FBM -> use Product Sampling for first reviews
+[ ] Rating >= 3 stars before planning Price Discounts
+[ ] Coupon running on new ASINs
+[ ] Price <= INR 500 + free delivery -> Bazaar visibility (check subcategory threshold)
+[ ] Account metrics within Price Discount limits (late shipment <= 4%, ODR <= 1%, cancel <= 0.5%)
+[ ] Ask Alexa for Shopping the top buyer questions on the live page and check the answers
+[ ] When traffic is high enough: A/B test title and main image with Manage Your Experiments
+[ ] Use Product Opportunity Explorer niches for keyword research

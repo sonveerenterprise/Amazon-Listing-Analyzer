@@ -1,0 +1,53 @@
+PRODUCT IMAGES - RULES (Amazon.in)
+Source: Seller Central Help > Product image guide (G1881). Condensed notes, read 17 Nov 2026.
+
+HOW MANY
+- At least 1 compliant MAIN image (required). Recommended: 6+ additional images and 1 video.
+- Uploading doesn't guarantee display. Amazon picks images from all sellers of the ASIN and may edit them. Selected images can take up to 24 hours to appear.
+- No compliant MAIN = listing may be removed from search until fixed.
+
+SLOT / VARIANT CODES
+- MAIN: search results + first image on detail page.
+- SWCH: swatch thumbnail (variation selector). If missing, MAIN is used.
+- PT01-PT99: extra angles, in use, details.
+- PS01-PS06: safety/compliance images ("Safety and Product Resources" section).
+- TOPP, BOTT, LEFT, RGHT, FRNT, BACK, SIDE: angle shots.
+- INGR: ingredient information.
+- DTLS: multipack image. EEGL: energy guide. IN01-IN99: book interiors.
+- Bulk file name: PRODUCTID.VARIANT.jpg (e.g. B000123456.MAIN.jpg). Exactly 3 parts with dots; spaces/dashes break the upload. ID can be ASIN, EAN, UPC, GTIN etc.
+
+TECHNICAL SPECS
+- Formats: JPEG (recommended), TIFF, PNG, non-animated GIF.
+- Longest side 500-10,000 px. Under 500 px can't upload. 1,000+ px enables zoom (recommended). Don't upscale small images.
+- At least 72 dpi, sharp, no pixelation. RGB preferred.
+
+MAIN IMAGE REQUIREMENTS
+- Realistic, professional photo showing true scale, quantity and colour.
+- No placeholder (the first image uploaded defines the product).
+- Product fills ~85% of the frame; whole product visible, nothing cut off.
+- Product shown once (not front and back together); only one unit plus included accessories.
+- Pure white background (255,255,255). Lifestyle main allowed only in a few product types.
+- No packaging unless it's a key feature.
+- No props/accessories not included. No mannequins. (Footwear: single shoe, left, 45°. Adult clothing: standing model.)
+
+ALL IMAGES
+- Must match the product sold and the title.
+- No nudity. Kids' form-fitting items flat, no models.
+- NO review images, star imagery, claims (e.g. "free shipping") or seller-specific info.
+- No text or pricing on the SWATCH image.
+- No Amazon logos/words ("Amazon", "Prime", "Alexa") and no Amazon-style badges ("Amazon's Choice", "Best seller", "Top seller").
+- AI-generated photorealistic people: tag file with "contains-synthetic-performer" in the XMP dc:subject field. Not needed for real people (even AI-edited), cartoons, or no people.
+
+FROM SELLER CASE EXPERIENCE (Nov 2026, Amazon support answers)
+- Claim badges in any image ("Sodium Free", "Low Moisture", "Diabetic Friendly", lab-report graphics) get the image rejected.
+- Plain photos of the real back label / nutrition panel ARE allowed; cropped photos of nutrition and ingredients are allowed.
+- MAIN and SWCH: no text or graphics.
+- In a variation family whose theme is "non-visual" (e.g. Package Size Name in Sugar Substitutes), Amazon shows ONE image set for all children. Only fix: separate listings.
+
+CHECKLIST FOR THE SKILL
+[ ] MAIN: white background, ~85% fill, one unit, no text, 1,000+ px
+[ ] 7+ images total, plus 1 video
+[ ] SWCH present for variation children
+[ ] No claim badges, star ratings, Amazon words/badges in any image
+[ ] Images match title (pack size, form, quantity)
+[ ] Back label / ingredients image present (INGR or PT slot)

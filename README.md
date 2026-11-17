@@ -26,7 +26,7 @@ Diagnoses an Amazon listing (any marketplace, tuned for amazon.in) and gives pas
 
 ## Contributing
 
-Create a branch, make your change, open a pull request. Keep everything in English. Check title and Item Highlights limits (India: 75 characters each) with a script before suggesting them.
+Create a branch, make your change, open a pull request. Keep everything in English. Check title (75) and Item Highlights limits with a script before suggesting them. Amazon.in Seller Central rules are in `references/amazon_in_rules/` and override everything else.
 
 ## Author
 
@@ -41,8 +41,9 @@ What's new compared with the original:
 - Like-for-like competitor snapshot with price position and "Customers say" topics
 - A+ audit and compliant A+ plan (Basic / Premium)
 - Nutrition table and lab-parameter checks
-- Rufus/Alexa (AEO) score
+- Rufus / Alexa for Shopping (AEO) score with intent map and Rufus-ads notes
 - Import duty and landed cost for non-India listings
+- Amazon.in Seller Central rules (titles, bullets, attributes, images, video, search, A+) and a growth-readiness check (Vine, Product Sampling, coupons, discounts, Bazaar, experiments)
 - New English report template
 
 Originally based on the Amazon Listing Analyzer by Floki Garvey (MIT license).

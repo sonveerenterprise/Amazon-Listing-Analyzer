@@ -1,0 +1,45 @@
+SEARCH OPTIMISATION - RULES (Amazon.in)
+Source: Seller Central Help > Search optimisation (GNYWHX2TP7C8GXHK). Condensed notes, read 17 Nov 2026.
+
+BASICS
+- Shoppers find products by search + browse. Accurate title, brand, description and attributes = better discoverability. Non-compliant listings can be suppressed from search.
+- Amazon may NOT use all words in your description/bullets for search (efficiency, anti-manipulation, irrelevant or offensive terms).
+
+BROWSE
+- Products sit in a browse tree (category > subcategory). Item Type Keyword decides the browse node.
+- Pick the most specific node (use Browse Tree Guides - BTG). Too broad = harder to find.
+
+BACKEND SEARCH TERMS (Generic Keyword field, not visible to shoppers)
+- Generic words only: synonyms, alternate names ("earphones", "earbuds").
+- LENGTH: this page says under 250 bytes; the Attributes guide says 200 bytes (error 97779). Use 200 bytes to be safe.
+- Prohibited terms (brand names, ASINs, offensive words) can cause ALL search terms to be dropped.
+- Best practices:
+  - synonyms, no repeated words
+  - spelling variants and abbreviations, but avoid common misspellings
+  - all lowercase, separated by spaces, no punctuation (; : -)
+  - singular OR plural, not both
+  - no brand names, ASINs, profanity
+  - no small words (a, and, or, the, with)
+  - no temporary words ("new", "on sale") or subjective words ("best", "cheapest")
+- Breaking these rules can suppress the ASIN and hurt account health.
+
+WHY AN ASIN DOESN'T SHOW IN SEARCH
+- No buyable offer (expired offer / no price or quantity) -> add offer.
+- No browse node -> assign the most specific relevant node.
+- Listing quality issue (suppressed / detail page removed) -> Fix Your Products.
+- Future launch / offering release date -> set it in the past.
+- Classified as adult -> excluded from All Departments search by design; contact support if wrong.
+- Changes to offer, browse node or launch date take up to 72 hours.
+
+SEARCH BEHAVIOUR
+- Queries can be auto-corrected ("Showing results for...").
+- Positions fluctuate with location, account type, desktop vs mobile. No guaranteed position.
+- Amazon stops showing results after a certain number of pages.
+
+CHECKLIST FOR THE SKILL
+[ ] Buyable offer active, price and quantity set
+[ ] Correct, most specific browse node / item type keyword
+[ ] Not suppressed (Fix Your Products)
+[ ] Release date in the past
+[ ] Backend terms: <= 200 bytes, lowercase, no punctuation, no brands/ASINs, no repeats of title words, no "best/new"
+[ ] Spot-check indexing: search "ASIN + keyword" on amazon.in

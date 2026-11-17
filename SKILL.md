@@ -41,7 +41,8 @@ Load `references/multi_site_adaptation.md` before fetching. Add language and cur
 
 **Title and Item Highlights limits:**
 - US: title 75 characters (enforced).
-- India: title **75** characters and Item Highlights **75** characters (confirmed by the seller).
+- India: title **75** characters including spaces (hard rule; over = blocked or hidden). Item Highlights: Amazon Help says about **125** extra characters, written as comma-separated phrases; the seller's food listings showed a 75-character field, so keep suggestions **≤75** unless the field in Seller Central allows more.
+- Full amazon.in rules from Seller Central Help (read 17 Nov 2026) are in `references/amazon_in_rules/`. **They override anything else in this skill**; load the matching file before checking titles (01), bullets (02), attributes (03), images (04), video (05), search (06), A+ (07) and growth programmes (08).
 - Other marketplaces: check Seller Central; 200 is only a reference value.
 
 ## Data collection
@@ -61,16 +62,18 @@ Identify the marketplace, load parameters, fetch, verify language and currency.
 ### Step 2 — Five-dimension diagnosis
 
 **Dimension 1: Compliance (25%)**
-- Title length within the marketplace limit (over the limit = P0); no banned characters (! $ ? _ { } ^ ~), promo or subjective words ("best", "cheap", "original"), unsupported claims, or competitor brand names. Avoid all-caps unless the registered brand is in capitals.
-- Main image: pure white background, no added text, watermark or border; product fills ≥85% of the frame; ≥1000 px. Text printed on the packaging itself is allowed.
-- Bullets: no price, promotion, shipping, contact details or review quotes.
+- Title (Amazon rules): ≤75 characters incl. spaces (over = P0); banned characters `! $ ? _ { } ^ ¬ ¦` (P0); `~ # < > *` only in real context (model "#4301", "<10 kg"); no decorative symbols; allowed punctuation only `- / , & .`; no promo phrases ("free shipping", "100% quality guaranteed") or subjective words ("best seller", "hot item"); **no word more than twice, brand included** (articles, prepositions, conjunctions exempt); must contain brand + product type; title case, **no ALL CAPS** and no all lowercase (an all-caps brand in the title = P1; keep the exact casing in the Brand field); numerals, not number words ("2-Pack"). Best order: brand → flavour/style → product type → key attribute → colour → size/pack count → model.
+- Main image: pure white background (255,255,255); product ~85% of the frame, whole product, shown once, one unit plus included accessories; no added text, graphics, props or watermark; ≥1,000 px longest side (zoom). Text printed on the packaging itself is allowed.
+- Bullets (Amazon rules): at least 3; `Header: description` format; start with a capital; sentence fragments with **no full stop at the end** (semicolons inside a bullet are fine); no ALL CAPS (headers included); numbers one to nine as words except measurements, names and model numbers; space between number and unit ("60 ml"); no special characters `™ ® € … † ‡ ¢ £ ¥ © ± ~ â`, emojis, placeholders (NA, TBD), ASINs, links, company or contact info; no price, promotion, shipping or review quotes; no guarantees or refund promises; no eco-friendly, anti-microbial or anti-bacterial claims; no abbreviations (qty, pkg, w/, approx.); no competitor comparisons; no repeated point across bullets; nothing that has its own field (country of origin, care instructions, fabric).
 - Variations: same category, consistent naming; MRP matches each printed label.
-- Images: no unauthorized logos, misleading comparisons; realistic AI people need XMP tags.
+- Images: no unauthorized logos, misleading comparisons; no review images, star ratings or Amazon words/badges ("Amazon", "Prime", "Alexa", "Amazon's Choice", "Best seller"); no claim badges (e.g. "Sodium Free", "Diabetic Friendly", lab-report graphics get images rejected); realistic AI people need the `contains-synthetic-performer` XMP tag.
 - No suppression notice.
 
 **Dimension 2: Attribute completeness (20%)**
 - Category key attributes filled (food: ingredients, diet type, allergens, storage, shelf life, nutrition, container, FSSAI licence; furniture: dimensions, material, load; electronics: power, interfaces, certifications).
-- Item Highlights filled; A+ present; search terms used without brand names or repetition.
+- Amazon's three views: **Required** (all filled), **Recommended** (count the empty ones; all should be filled), All (as many as possible). Values must match the physical label (net quantity, ingredients, manufacturer, packer with full address); drop-down fields use listed values only; unit count = number + unit ("15 count", "225 Grams").
+- Item Highlights filled; 7+ images (MAIN + 6) and at least 1 video; A+ (Premium if possible) and Brand Story; correct, most specific browse node (Item Type Keyword).
+- Backend search terms ≤**200 bytes** (error 97779 above that), see Step 3.
 - Part/model number is a SKU, not a description.
 
 **Dimension 3: Selling-point coverage (20%)**
@@ -92,7 +95,8 @@ One topic per bullet; no repetition; order = core benefit → supporting facts �
 - Coverage matrix: keyword → title → highlights → bullets → A+ → status. Benchmark against top search-result titles on the same marketplace.
 - Flag off-topic or risky words (other brands' names, misleading terms).
 - Never recommend sensitive or regulated words (disease terms, warranty claims) as keywords, even if searched.
-- Suggest backend search terms (no brand names, no repetition of title words; local-language and phonetic spellings are useful).
+- Suggest backend search terms (Amazon rules): ≤**200 bytes**; all lowercase, space-separated, no punctuation; synonyms, alternate names, spelling variants and abbreviations (no common misspellings); singular **or** plural, not both; no repeated words or title words; no small words (a, and, or, the, with); no brand names, ASINs or profanity (one prohibited term can drop the whole field); no temporary or subjective words ("new", "on sale", "best"). Local-language and phonetic spellings are useful.
+- Searchability check: buyable offer active, most specific browse node, not suppressed (Fix Your Products), release date in the past. Amazon may not index every word in bullets or description, so confirm with Step 3C.
 
 ### Step 3A — Keyword usage, Scribbles-style (always; in the detailed report)
 Show how many times each target **word** and **phrase** is used in the **current live listing** (not the rewrite).
@@ -213,11 +217,11 @@ Checks (per 100 g / 100 ml, and per serving if shown):
 Output: parameter → value + unit → check → OK/deviation → what to verify. Deviations are P1 (P0 if they create a false nutrition or health claim).
 
 ### Step 7 — Per-image review (add-on)
-Review **every** carousel image one by one: type, selling point, rendering/photo quality, design, layout and text size on mobile, order. Score each 0–100. Flag duplicates, label rotations that add nothing, claims in images, cross-variant images. Build a text-vs-image coverage matrix for key selling points and suggest a new order. See `references/image_diagnosis.md`.
+Review **every** carousel image one by one: type, selling point, rendering/photo quality, design, layout and text size on mobile, order. Amazon recommends MAIN + 6 or more images and 1 video; images must match the title (pack size, form, quantity); plain photos or crops of the real back label and nutrition panel are allowed (INGR or a PT slot), but claim badges are not; MAIN and SWCH carry no text or graphics; variation children need a SWCH image. **Video** (Amazon: ASINs that added one saw about 24% more sales, Jan–Jun 2026): MP4/MOV, 1080p, 16:9 or 9:16, 1–12 minutes, shows the product in use and answers top buyer questions; no links, calls to action, promo, unlicensed music or third-party branding. Score each 0–100. Flag duplicates, label rotations that add nothing, claims in images, cross-variant images. Build a text-vs-image coverage matrix for key selling points and suggest a new order. See `references/image_diagnosis.md`.
 
 ### Step 8 — A+ content: current audit + compliant improvement plan (always in the detailed report)
 
-**8a. Audit the current A+.** Existence and type (Basic: up to 5 modules; Premium: up to 7; Brand Story separate). Module list (type, content, issue), duplicate images, alt text quality (empty or codes = fix), sensitive claims in A+ text and images, comparison-table values vs attributes, consistency with bullets, typos, carousel order (scene → function → detail → comparison → CTA), and which variant the A+ shows. Look at every A+ image. See `references/aplus_diagnosis.md`.
+**8a. Audit the current A+.** Existence and type (Basic: up to 5 modules, 14 module types, 970 × 300 images; Premium: up to 7 modules, 19 module types, 1464 × 600 images, video, hotspots, carousels, Q&A; Brand Story: 1 module, up to 19 cards, separate). Amazon's A+ rules: alt text on **every** image; max 3 sentences per paragraph; spell out numbers under 10; unique content (no images duplicated from the gallery); readable text on mobile; no GIFs, watermarks, QR codes, links, time-sensitive or promo language, pricing, warranty or shipping info, competitor comparisons; brand name exactly as in Brand Registry. Module list (type, content, issue), duplicate images, alt text quality (empty or codes = fix), sensitive claims in A+ text and images, comparison-table values vs attributes, consistency with bullets, typos, carousel order (scene → function → detail → comparison → CTA), and which variant the A+ shows. Look at every A+ image. See `references/aplus_diagnosis.md`.
 
 **8b. Write a compliant A+ plan** that fixes what 8a found, using the available module count plus Brand Story. Always state the tier in the plan heading, in brackets:
 - **(Basic A+: 5 modules / 5 images)**: use modules 1, 2, 3, 5 and an FAQ via **Standard Text** (Basic has no Q&A module).
@@ -243,8 +247,25 @@ Output table per module: **# · module type · headline · copy (paste-ready) ·
 
 Never promise conversion lifts or ROI; say "expected to help conversion" at most.
 
-### Step 9 — Rufus / Alexa discoverability (AEO, add-on)
-Score 0–100: title meaning (what + for whom + key benefit) 15; Amazon's Choice 10; bullet structure 15; query coverage (use-case, comparison, problem-solution, suitability) 20; structured attributes 15; Q&A 15; review language covered 5; A+ comparison/FAQ 5. For each part give the gap and the fix. See `references/cosmo_rufus_optimization.md`.
+### Step 9 — Rufus / Alexa for Shopping discoverability (AEO, always in the detailed report)
+Rufus now sits in the main search bar and was merged with Alexa+ as "Alexa for Shopping" (May 2026; live in India on app and website, no Prime needed). Amazon says product questions ("dimensions?", "is it vegetarian?") are answered **from the detail page**, so accurate attributes, bullets and description give accurate answers. Shoppers also use it for comparisons, "what customers say", price history (30/90/365 days) and price alerts. If it gives a wrong answer: fix the detail page first, then raise a Seller Support ticket with the ASIN, a screenshot of the question and answer, what's wrong, the expected answer and proof.
+
+**Score 0–100:** title meaning (what + for whom + key benefit, no stuffing) 15; Amazon's Choice 10; bullet structure (each bullet answers one buyer question in full) 15; intent-map coverage 20; structured attributes 15; Q&A and review replies 15; review language covered 5; A+ comparison/FAQ/edge cases 5. For each part give the gap and the fix.
+
+**Intent map (replaces a plain keyword list):** list 10–15 buyer questions in four groups, and mark where each is answered (attribute, title, bullet, A+, Q&A) or "gap":
+- Situations ("honey for office tea", "for travel")
+- Constraints with numbers ("under 20 g sugar per serve", "fits a lunch box")
+- Comparisons ("raw vs processed honey", "sachets vs jar")
+- Jobs ("Diwali corporate gift", "pre-run snack")
+Include the suggested questions Rufus shows on the product page when visible (the seller can screenshot them). Every gap gets a paste-ready answer and a place to put it. Attribute fields mapped to the top questions are fixed first.
+
+**Rufus ads (Sponsored Products / Sponsored Brands prompts):** add 3–4 lines to the report:
+- No separate Rufus campaign, budget or placement bid; eligible SP/SB campaigns serve in Rufus automatically (billable on normal CPC since 25 Mar 2026).
+- Amazon picks which conversational prompts an ASIN can serve on, based on the detail page; the auction runs only among eligible ASINs. So listing gaps = fewer ad placements.
+- Seller action: in the ad console, review the active Rufus prompts for each ASIN and opt out of any that misrepresent the product; keep campaigns active.
+- Close answer gaps before raising bids. No custom prompts, per-prompt bids or per-prompt reports exist; don't promise them.
+
+**Test:** after changes, ask Rufus the top 5 intent questions and note whether this ASIN appears. Source: Trellis blog (Oct 2026) plus Amazon announcements it cites; mark article-only claims as such. See `references/cosmo_rufus_optimization.md`.
 
 ### Step 10 — P0 list and total score
 P0 items go in a red box at the top regardless of score: title over limit; banned characters, promo or competitor words in title; non-compliant main image; price/promo/contact in bullets; cross-category variations; core attributes mostly empty; AI people without XMP; suppressed listing; disease/medical claims; other brands' logos; unsupported certifications; contradictory values for the same attribute; A+ showing another variant.
@@ -272,11 +293,11 @@ Never estimate PPC spend, market share, sales, deal frequency or price history; 
 ### Step 12 — Optimized listing, ready to paste (always; first section of the detailed report)
 The seller's workflow is: copy → paste into Seller Central → done. Always deliver the full rewritten listing, not only advice.
 
-1. **Title** (with character count; India and US ≤75).
-2. **Item Highlights** (with character count; India ≤75).
-3. **5 bullets**: `HEADER: fact + benefit`, one topic each, numbers first (dose, size, servings, formula). Never use a bullet for warranty, guarantee or "social proof".
+1. **Title** (with character count; India and US ≤75): brand first, then product type and key attribute, pack/size; title case; no word more than twice (brand included); numerals.
+2. **Item Highlights** (with character count; keep ≤75 for India unless the field allows more): comma-separated phrases, not sentences.
+3. **5 bullets** in Amazon's format: `Header in Title Case: fact + benefit` (no ALL CAPS), one topic each, no full stop at the end, semicolons inside, "15 g" spacing, numbers one to nine as words except measurements, no ®/™ or other banned characters. Never use a bullet for warranty, guarantee, "social proof", eco claims or country of origin.
 4. **Product description** (≤2,000 characters): problem → how it works → ingredients/what's inside → uses → how to use → what's in the box. Embed keywords not used above. Plain text, no HTML, no claims you wouldn't put in bullets.
-5. **Backend search terms**: words not already in title/highlights/bullets, from the indexing check and keyword mining; no brand names; ≤249 bytes. Terms that would be risky as visible claims (e.g. "natural" on a product with a preservative) may go here only.
+5. **Backend search terms**: words not already in title/highlights/bullets, from the indexing check and keyword mining; no brand names; ≤**200 bytes**, lowercase, no punctuation, singular or plural only. Terms that would be risky as visible claims (e.g. "natural" on a product with a preservative) may go here only.
 
 **Competitor keyword gap:** read the full titles (and bullets) of the top 5 like-for-like competitors (Step 11), list words used by 2+ of them that this listing lacks, and add the safe ones. List what was **not** copied on purpose (disease claims, "organic"/"pure" without proof, "no chemicals").
 
@@ -289,8 +310,21 @@ Tone: professional and factual by default (or friendly for food and home). Never
 ### Step 12B — Action list
 Each item: problem → exact fix (paste-ready text with character count for titles and highlights) → expected effect → priority (P0/P1/P2). Always check title, highlights and description lengths with a script before giving them.
 
+### Step 12C — Growth readiness (Amazon programmes; always in the detailed report)
+Load `references/amazon_in_rules/08-increase-sales.txt`. Ask the seller (or read from screenshots) fulfilment type, Brand Registry status and account metrics; mark unknowns "not obtained". Table: programme → eligible? → why → next step.
+- **Reviews:** Vine needs Brand Registry **and FBA**, under 30 reviews, buyable FBA stock (fee per parent after the first review). FBM sellers use **Product Sampling** (₹1 claim code; works with any fulfilment). Request a Review button for every order. Never incentivised or fake reviews.
+- **Coupons:** suggest one on new ASINs (shown in search, detail page, cart).
+- **Price Discounts:** need rating ≥3 stars, New condition, discount ≥5% below the 30-day lowest price and ≥2% below current price, MRP for strike-through; FBM also needs late shipment ≤4%, ODR ≤1%, pre-fulfilment cancellation ≤0.5% and free shipping. Zero-review ASINs aren't eligible.
+- **Promotions:** published promotions are binding; test the rules. Referral fee is on the post-promotion price.
+- **Amazon Bazaar:** price at or below the subcategory threshold (often ₹500) with zero delivery charge via Easy Ship or self-ship = automatic visibility.
+- **Alexa for Shopping:** shoppers see 30/90/365-day price history, so never raise a price to show a fake discount.
+- **Manage Your Experiments:** A/B test title, images, bullets, A+ once the ASIN has high traffic and Brand Registry.
+- **Product Opportunity Explorer:** use niches for real search terms (Professional account).
+- **Others:** gift options (FBM can enable gift wrap/message), Subscribe & Save (FBA only), Sale Event Planner before big sales, warranty field (durable goods only).
+Never promise sales lifts; quote Amazon's own figures only with their source.
+
 ### Step 13 — Report
-Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, keyword usage (Scribbles), rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, import duty and landed cost (non-India marketplaces only), action list, data collection notes.
+Only create the HTML report when the user asks for one. Use `assets/report_template.html` (white background, English). Save to `~/reports/listing_analysis_[ASIN]_[YYYYMMDD].html`. Sections, in order: **optimized listing (ready to paste) + keyword coverage before → after**, scorecard, P0 box, five dimensions, images, keywords, keyword usage (Scribbles), rank by keyword, keyword indexing, starter negative keywords, competitor snapshot (with competitor keyword gap), sensitive claims, IP, consistency, nutrition check (food), A+ (audit + plan), AEO, growth readiness, import duty and landed cost (non-India marketplaces only), action list, data collection notes.
 
 ### Step 14 — Import duty and landed cost (only for listings outside India)
 Run when the marketplace isn't amazon.in and the product ships from India (or another origin the user names). Include in the detailed report.
@@ -341,6 +375,7 @@ When the user gives product details (or local materials) instead of an ASIN:
 21b. Run the rank-by-keyword check (Step 3B) for every ASIN and include it in every detailed report. Before recommending removal of any title or highlights word, check whether it currently drives a page-1 rank.
 22. Regulatory points are risk flags based on current understanding; tell the user to confirm with their consultant.
 23. Keep chat answers short and to the point; put detail in the report.
+24. `references/amazon_in_rules/` holds Amazon's own Seller Central rules for amazon.in; when anything in this skill or other references disagrees, follow those files.
 
 ## References
 
